@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/raci-matrix.scss';
+import env from '../../src/config/env';
 
 const UpdateRaciMatrix = () => {
   const { eventId } = useParams();
@@ -26,17 +27,17 @@ const UpdateRaciMatrix = () => {
         const token = localStorage.getItem('raci_auth_token');
         
         // Fetch event details
-        const eventResponse = await axios.get(`http://localhost:5000/api/events/${eventId}`, {
+        const eventResponse = await axios.get(`${env.apiBaseUrl}/events/${eventId}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
         // Fetch RACI matrix for this event
-        const raciResponse = await axios.get(`http://localhost:5000/api/events/${eventId}/raci-matrix`, {
+        const raciResponse = await axios.get(`${env.apiBaseUrl}/events/${eventId}/raci-matrix`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
         // Fetch employees for assignment options
-        const employeesResponse = await axios.get(`http://localhost:5000/api/companies/my-company/employees`, {
+        const employeesResponse = await axios.get(`${env.apiBaseUrl}/companies/my-company/employees`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -263,7 +264,7 @@ const UpdateRaciMatrix = () => {
       
       const token = localStorage.getItem('raci_auth_token');
       const response = await axios.put(
-        `http://localhost:5000/api/raci-matrices/${eventId}`, 
+        `${env.apiBaseUrl}/raci-matrices/${eventId}`, 
         raciData, 
         {
           headers: {

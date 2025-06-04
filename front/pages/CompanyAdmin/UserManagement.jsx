@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const UserManagement = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const UserManagement = () => {
     const fetchDepartments = async () => {
       try {
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`http://localhost:5000/api/companies/${companyId}/departments`, {
+        const response = await fetch(`${env.apiBaseUrl}/companies/${companyId}/departments`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
@@ -79,7 +80,7 @@ const UserManagement = () => {
         
         // Direct fetch to handle errors better
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`http://localhost:5000/api/users?${queryParams}`, {
+        const response = await fetch(`${env.apiBaseUrl}/users?${queryParams}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'

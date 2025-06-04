@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import env from '../../src/config/env';
 
 const RACIAssignment = () => {
   const [selectedEvent, setSelectedEvent] = useState('');
@@ -57,7 +58,7 @@ const RACIAssignment = () => {
         
         // Try first with the /users/me endpoint
         try {
-          const userResponse = await fetch('http://localhost:5000/api/users/me', {
+          const userResponse = await fetch(`${env.apiBaseUrl}/users/me`, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Accept': 'application/json'
@@ -74,7 +75,7 @@ const RACIAssignment = () => {
           }
           
           // If /users/me fails, try with /auth/current-user endpoint
-          const authResponse = await fetch('http://localhost:5000/api/auth/current-user', {
+          const authResponse = await fetch(`${env.apiBaseUrl}/auth/current-user`, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Accept': 'application/json'
@@ -126,7 +127,7 @@ const RACIAssignment = () => {
         
         // Fetch users for the company using the /users endpoint with companyId param
         // This matches the API documentation
-        const response = await fetch(`http://localhost:5000/api/users?companyId=${companyId}`, {
+        const response = await fetch(`${env.apiBaseUrl}/users?companyId=${companyId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
@@ -193,7 +194,7 @@ const RACIAssignment = () => {
         
         // Use direct fetch for better error handling
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch('http://localhost:5000/api/events', {
+        const response = await fetch(`${env.apiBaseUrl}/events`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
@@ -466,7 +467,7 @@ const RACIAssignment = () => {
       
       // Make API request to save RACI matrix
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/raci-matrices', {
+      const response = await fetch(`${env.apiBaseUrl}/raci-matrices`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -546,7 +547,7 @@ const RACIAssignment = () => {
       console.log('Submitting for approval:', approvalPayload);
 
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/raci-matrices/submit-approval', {
+      const response = await fetch(`${env.apiBaseUrl}/raci-matrices/submit-approval`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -578,7 +579,7 @@ const RACIAssignment = () => {
       setLoadingEmployees(true);
       
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch(`http://localhost:5000/api/events/${eventId}/raci-matrix`, {
+      const response = await fetch(`${env.apiBaseUrl}/events/${eventId}/raci-matrix`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -883,7 +884,7 @@ const RACIAssignment = () => {
       const token = localStorage.getItem('raci_auth_token');
       
       // Fetch full event data which contains employees and tasks
-      const response = await fetch(`http://localhost:5000/api/events/${eventId}`, {
+      const response = await fetch(`${env.apiBaseUrl}/events/${eventId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -970,7 +971,7 @@ const RACIAssignment = () => {
     
     try {
       const token = localStorage.getItem('raci_auth_token');
-      const deptResponse = await fetch(`http://localhost:5000/api/departments/${departmentId}`, {
+      const deptResponse = await fetch(`${env.apiBaseUrl}/departments/${departmentId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -1694,8 +1695,8 @@ const RACIAssignment = () => {
     try {
       const token = localStorage.getItem('raci_auth_token');
       const url = departmentId 
-        ? `http://localhost:5000/api/departments/${departmentId}`
-        : 'http://localhost:5000/api/users';
+        ? `${env.apiBaseUrl}/departments/${departmentId}`
+        : `${env.apiBaseUrl}/users`;
         
       const response = await fetch(url, {
         headers: {

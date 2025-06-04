@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const EditCompany = () => {
   const { id } = useParams();
@@ -41,8 +42,8 @@ const EditCompany = () => {
         
         // Set logo preview if exists
         if (data.logoUrl) {
-          setOriginalLogo(`http://localhost:5000${data.logoUrl}`);
-          setLogoPreview(`http://localhost:5000${data.logoUrl}`);
+          setOriginalLogo(`${env.apiBaseUrl}${data.logoUrl}`);
+          setLogoPreview(`${env.apiBaseUrl}${data.logoUrl}`);
         }
 
         const industryValue = data.industry || '';
@@ -124,7 +125,7 @@ const EditCompany = () => {
       const token = localStorage.getItem('raci_auth_token');
       
       // Send PUT request to update company
-      const response = await fetch(`http://localhost:5000/api/companies/${id}`, {
+      const response = await fetch(`${env.apiBaseUrl}/companies/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`

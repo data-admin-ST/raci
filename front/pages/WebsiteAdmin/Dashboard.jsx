@@ -6,6 +6,7 @@ import CreateCompanyAdmin from './CreateCompanyAdmin';
 import EditCompany from './EditCompany';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
+import env from '../../src/config/env';
 
 const WebsiteAdminDashboard = () => {
   const navigate = useNavigate();
@@ -503,7 +504,7 @@ const WebsiteAdminDashboard = () => {
                                   {company.logoUrl ? (
                                     <div style={{ width: '40px', height: '40px', borderRadius: '6px', overflow: 'hidden', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #e5e7eb' }}>
                                       <img 
-                                        src={`http://localhost:5000${company.logoUrl}`} 
+                                        src={`${env.apiBaseUrl}${company.logoUrl}`} 
                                         alt={`${company.name} logo`} 
                                         style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
                                         onError={(e) => {

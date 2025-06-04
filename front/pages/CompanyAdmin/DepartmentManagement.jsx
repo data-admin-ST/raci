@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const DepartmentManagement = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const DepartmentManagement = () => {
         
         // Direct fetch to handle errors better
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`http://localhost:5000/api/companies/${companyId}/departments`, {
+        const response = await fetch(`${env.apiBaseUrl}/companies/${companyId}/departments`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
@@ -82,7 +83,7 @@ const DepartmentManagement = () => {
       try {
         // Send delete request
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`http://localhost:5000/api/departments/${deptId}`, {
+        const response = await fetch(`${env.apiBaseUrl}/departments/${deptId}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

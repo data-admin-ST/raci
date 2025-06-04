@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import env from '../../src/config/env';
 
 const TasksAssigned = () => {
   const [tasks, setTasks] = useState([]);
@@ -16,7 +17,7 @@ const TasksAssigned = () => {
         
         // First try user-raci endpoint which is the most likely to be implemented
         try {
-          const response = await fetch('http://localhost:5000/api/user-raci/my-assignments', {
+          const response = await fetch(`${env.apiBaseUrl}/user-raci/my-assignments`, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Accept': 'application/json'
@@ -41,7 +42,7 @@ const TasksAssigned = () => {
         
         // If first endpoint fails, try the tasks endpoint
         try {
-          const response = await fetch('http://localhost:5000/api/tasks/assigned-to-me', {
+          const response = await fetch(`${env.apiBaseUrl}/tasks/assigned-to-me`, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Accept': 'application/json'

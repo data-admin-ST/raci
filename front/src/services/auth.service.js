@@ -14,7 +14,7 @@ class AuthService {
       console.log('Attempting website admin login with:', email);
       
       // Use direct fetch for more control over the request
-      const adminResponse = await fetch(`http://localhost:5000/api/website-admins/login`, {
+      const adminResponse = await fetch(`${env.apiBaseUrl}/website-admins/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ class AuthService {
       
       // If website admin login fails, try regular user login
       console.log('Website admin login failed, trying regular user login');
-      const userResponse = await fetch(`http://localhost:5000/api/auth/login`, {
+      const userResponse = await fetch(`${env.apiBaseUrl}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

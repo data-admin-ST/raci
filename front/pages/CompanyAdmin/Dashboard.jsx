@@ -15,6 +15,7 @@ import CreateUser from './CreateUser';
 import EditUser from './EditUser';
 import CreateDepartment from './CreateDepartment';
 import EditDepartment from './EditDepartment';
+import env from '../../src/config/env';
 
 const CompanyAdminDashboard = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const CompanyAdminDashboard = () => {
           try {
             // Use direct fetch to handle errors better
             const token = localStorage.getItem('raci_auth_token');
-            const response = await fetch(`http://localhost:5000/api/companies/${companyId}`, {
+            const response = await fetch(`${env.apiBaseUrl}/companies/${companyId}`, {
               headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json'
@@ -125,7 +126,7 @@ const CompanyAdminDashboard = () => {
         const token = localStorage.getItem('raci_auth_token');
         
         try {
-          const response = await fetch('http://localhost:5000/api/dashboard/company-admin', {
+          const response = await fetch(`${env.apiBaseUrl}/dashboard/company-admin`, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Accept': 'application/json'

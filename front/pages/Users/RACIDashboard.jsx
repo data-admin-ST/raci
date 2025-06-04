@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import env from '../../src/config/env';
 
 const RACIDashboard = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const RACIDashboard = () => {
         const token = localStorage.getItem('raci_auth_token');
         
         // Fetch user's RACI assignments using the specified endpoint
-        const response = await fetch('http://localhost:5000/api/user-raci/my-assignments', {
+        const response = await fetch(`${env.apiBaseUrl}/user-raci/my-assignments`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'

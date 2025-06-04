@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const CreateCompany = () => {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ const CreateCompany = () => {
       const token = localStorage.getItem('raci_auth_token');
       
       // Send POST request to create company
-      const response = await fetch('http://localhost:5000/api/companies', {
+      const response = await fetch(`${env.apiBaseUrl}/companies`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

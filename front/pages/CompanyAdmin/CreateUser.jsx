@@ -3,6 +3,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const CreateUser = () => {
           try {
             setLoadingDepts(true);
             const token = localStorage.getItem('raci_auth_token');
-            const response = await fetch(`http://localhost:5000/api/companies/${userData.company.id}/departments`, {
+            const response = await fetch(`${env.apiBaseUrl}/companies/${userData.company.id}/departments`, {
               headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json'
@@ -140,7 +141,7 @@ const CreateUser = () => {
       
       // Direct fetch for better error handling
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch(`${env.apiBaseUrl}/users`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

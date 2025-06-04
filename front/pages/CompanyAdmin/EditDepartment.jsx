@@ -3,6 +3,7 @@ import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
 import '../../styles/dashboard.scss';
+import env from '../../src/config/env';
 
 const EditDepartment = () => {
   const { id } = useParams();
@@ -151,7 +152,7 @@ const EditDepartment = () => {
       
       // Using direct fetch for better error handling
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch(`http://localhost:5000/api/departments/${id}`, {
+      const response = await fetch(`${env.apiBaseUrl}/departments/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

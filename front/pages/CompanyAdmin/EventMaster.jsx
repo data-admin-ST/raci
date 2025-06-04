@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
+import env from '../../src/config/env';
 
 const EventMaster = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const EventMaster = () => {
           try {
             // Use direct fetch for my-company endpoint
             const token = localStorage.getItem('raci_auth_token');
-            const response = await fetch('http://localhost:5000/api/companies/my-company', {
+            const response = await fetch(`${env.apiBaseUrl}/companies/my-company`, {
               headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json'
@@ -132,7 +133,7 @@ const EventMaster = () => {
       
       // Using correct endpoint for departments
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch(`http://localhost:5000/api/companies/${companyId}/departments`, {
+      const response = await fetch(`${env.apiBaseUrl}/companies/${companyId}/departments`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -183,7 +184,7 @@ const EventMaster = () => {
       
       // Use direct fetch for better debugging
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch(`http://localhost:5000/api/departments/${departmentId}`, {
+      const response = await fetch(`${env.apiBaseUrl}/departments/${departmentId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -224,7 +225,7 @@ const EventMaster = () => {
       
       // Use direct fetch for better debugging
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/events', {
+      const response = await fetch(`${env.apiBaseUrl}/events`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -390,7 +391,7 @@ const EventMaster = () => {
       try {
         setError('');
         const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`http://localhost:5000/api/events/${eventId}`, {
+        const response = await fetch(`${env.apiBaseUrl}/events/${eventId}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -484,7 +485,7 @@ const EventMaster = () => {
       
       if (eventForm.document) {
         // Use FormData approach for file uploads
-        response = await fetch('http://localhost:5000/api/events', {
+        response = await fetch(`${env.apiBaseUrl}/events`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -493,7 +494,7 @@ const EventMaster = () => {
         });
       } else {
         // Use direct JSON approach for no files
-        response = await fetch('http://localhost:5000/api/events', {
+        response = await fetch(`${env.apiBaseUrl}/events`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -620,7 +621,7 @@ const EventMaster = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch(`${env.apiBaseUrl}/users`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -669,7 +670,7 @@ const EventMaster = () => {
       };
 
       const token = localStorage.getItem('raci_auth_token');
-      const response = await fetch('http://localhost:5000/api/subtasks', {
+      const response = await fetch(`${env.apiBaseUrl}/subtasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
