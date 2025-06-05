@@ -159,11 +159,11 @@ const UserDashboard = () => {
           <NavLink to="/user/help" className="nav-item">
             <i className="icon">❓</i> Help & Support
           </NavLink>
-          
-          <NavLink to="/" className="nav-item">
-            <i className="icon">🏠</i> Back to Home
-          </NavLink>
         </nav>
+        
+        <button className="logout-btn" onClick={handleLogout}>
+          <span>🚪</span> Logout
+        </button>
       </aside>
       
       <main className="dashboard-content">

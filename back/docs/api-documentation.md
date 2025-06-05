@@ -331,6 +331,7 @@ Error response example:
 - **Method**: `POST`
 - **Auth required**: Yes (company_admin or website_admin)
 - **Description**: Create a new user
+- **Content-Type**: `multipart/form-data`
 - **Request Body**:
   ```json
   {
@@ -341,7 +342,9 @@ Error response example:
     "phone": "+1234567890",
     "employeeId": "EMP123",
     "departmentId": 1,
-    "companyId": 1
+    "companyId": 1,
+    "location": "New York, USA",
+    "photo": (file - only for company_admin role)
   }
   ```
 - **Success Response**:
@@ -354,6 +357,8 @@ Error response example:
     "designation": "Job Title",
     "phone": "+1234567890",
     "employeeId": "EMP123",
+    "photo": "/uploads/profile-photo.jpg",
+    "location": "New York, USA",
     "department": {
       "id": 1,
       "name": "Department Name"
@@ -363,10 +368,12 @@ Error response example:
       "name": "Company Name"
     },
     "status": "pending",
-    "tempPassword": "random-password"
+    "tempPassword": "random-password",
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-01T00:00:00Z"
   }
   ```
-- **Note**: The `tempPassword` should be shown to the admin creating the user, who should securely share it with the new user. This user will be required to change their password on first login.
+- **Note**: The `tempPassword` should be shown to the admin creating the user, who should securely share it with the new user. This user will be required to change their password on first login. The `photo` field is only applicable for users with `company_admin` role.
 
 ### Get All Users
 
@@ -397,7 +404,10 @@ Error response example:
           "id": 1,
           "name": "Department Name"
         },
-        "status": "active"
+        "status": "active",
+        "location": "New York, USA",
+        "createdAt": "2023-01-01T00:00:00Z",
+        "updatedAt": "2023-01-02T00:00:00Z"
       }
     ]
   }
@@ -419,6 +429,8 @@ Error response example:
     "designation": "Job Title",
     "phone": "+1234567890",
     "employeeId": "EMP123",
+    "photo": "/uploads/profile-photo.jpg",
+    "location": "New York, USA",
     "department": {
       "id": 1,
       "name": "Department Name"
@@ -427,7 +439,9 @@ Error response example:
       "id": 1,
       "name": "Company Name"
     },
-    "status": "active"
+    "status": "active",
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-02T00:00:00Z"
   }
   ```
 
@@ -437,16 +451,43 @@ Error response example:
 - **Method**: `PUT`
 - **Auth required**: Yes (self, company_admin or website_admin)
 - **Description**: Update user details
+- **Content-Type**: `multipart/form-data`
 - **Request Body**:
   ```json
   {
     "name": "Updated Name",
     "designation": "Updated Title",
     "phone": "+1234567890",
-    "departmentId": 1
+    "departmentId": 1,
+    "location": "San Francisco, USA",
+    "photo": (file - only for company_admin role)
   }
   ```
-- **Success Response**: Updated user object
+- **Success Response**: 
+  ```json
+  {
+    "id": 1,
+    "name": "Updated Name",
+    "email": "user@example.com",
+    "role": "user|company_admin|hod",
+    "designation": "Updated Title",
+    "phone": "+1234567890",
+    "employeeId": "EMP123",
+    "photo": "/uploads/profile-photo.jpg",
+    "location": "San Francisco, USA",
+    "department": {
+      "id": 1,
+      "name": "Department Name"
+    },
+    "company": {
+      "id": 1,
+      "name": "Company Name"
+    },
+    "status": "active",
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-02T14:30:00Z"
+  }
+  ```
 
 ### Delete User
 
@@ -682,7 +723,9 @@ Error response example:
         "id": 1,
         "name": "HOD Name"
       },
-      "employeesCount": 10
+      "employeesCount": 10,
+      "createdAt": "2023-01-01T00:00:00Z",
+      "updatedAt": "2023-01-02T00:00:00Z"
     }
   ]
   ```
@@ -949,26 +992,10 @@ Error response example:
         "consulted": [4, 5],
         "informed": [6, 7],
         "financialLimits": {
-          "task-1-responsible-1": {
-            "min": 1000,
-            "max": 5000
-          },
-          "task-1-responsible-2": {
-            "min": 500,
-            "max": 2000
-          },
-          "task-1-accountable-3": {
-            "min": 5000,
-            "max": 10000
-          }
+          "task-1-responsible-1": { "min": 1000, "max": 5000 },
+          "task-1-responsible-2": { "min": 500, "max": 2000 },
+          "task-1-accountable-3": { "min": 5000, "max": 10000 }
         }
-      },
-      {
-        "taskId": 2,
-        "responsible": [2],
-        "accountable": [1],
-        "consulted": [3, 4],
-        "informed": [5, 6, 7]
       }
     ]
   }
@@ -986,30 +1013,7 @@ Error response example:
   ```json
   {
     "success": true,
-    "eventId": 1,
-    "eventName": "Event Name",
-    "department": {
-      "id": 1,
-      "name": "Department Name"
-    },
-    "tasks": [
-      {
-        "id": 1,
-        "name": "Task 1",
-        "responsibleCount": 2,
-        "accountableCount": 1,
-        "consultedCount": 2,
-        "informedCount": 2
-      },
-      {
-        "id": 2,
-        "name": "Task 2",
-        "responsibleCount": 1,
-        "accountableCount": 1,
-        "consultedCount": 2,
-        "informedCount": 3
-      }
-    ]
+    "message": "RACI matrix created successfully"
   }
   ```
 
@@ -1117,6 +1121,98 @@ Error response example:
   "error": "Error message details"
 }
 ```
+
+---
+
+## RACI Tracker
+
+### Get Company RACI Assignments
+
+- **URL**: `/api/raci-tracker/company`
+- **Method**: `GET`
+- **Auth required**: Yes (company_admin)
+- **Description**: Get all RACI assignments for the company of the authenticated company admin, including all users, their roles, financial limits, task, event, and department details.
+- **Success Response**:
+  ```json
+  {
+    "success": true,
+    "data": [
+      {
+        "id": 1,
+        "user": {
+          "id": 12,
+          "name": "Alice Smith",
+          "email": "alice@company.com",
+          "role": "user"
+        },
+        "role": "R",
+        "financialLimits": { "min": 1000, "max": 5000 },
+        "task": {
+          "id": 10,
+          "name": "Approve Budget",
+          "description": "Approve the department budget"
+        },
+        "event": {
+          "id": 5,
+          "name": "Annual Planning",
+          "startDate": "2024-06-01T00:00:00.000Z",
+          "endDate": "2024-06-10T00:00:00.000Z"
+        },
+        "department": {
+          "id": 2,
+          "name": "Finance"
+        }
+      }
+      // ...more assignments for all users in the company
+    ]
+  }
+  ```
+- **Note**: This endpoint is accessible to company_admins and returns all RACI assignments for all users in their company, including user info, roles, financial limits, and related task/event/department details.
+
+## RACI Tracker
+
+### Get My RACI Assignments
+
+- **URL**: `/api/raci-tracker/my-assignments`
+- **Method**: `GET`
+- **Auth required**: Yes (any authenticated user, including company_admin)
+- **Query Parameters**:
+  - `page`: Page number (default: 1)
+  - `pageSize`: Number of items per page (default: 10)
+- **Description**: Get all RACI assignments for the currently authenticated user (works for company_admin, hod, and user roles), including financial limits, task, event, and department details.
+- **Success Response**:
+  ```json
+  {
+    "success": true,
+    "totalItems": 20,
+    "totalPages": 2,
+    "currentPage": 1,
+    "data": [
+      {
+        "id": 1,
+        "role": "R",
+        "financialLimits": { "min": 1000, "max": 5000 },
+        "task": {
+          "id": 10,
+          "name": "Approve Budget",
+          "description": "Approve the department budget"
+        },
+        "event": {
+          "id": 5,
+          "name": "Annual Planning",
+          "startDate": "2024-06-01T00:00:00.000Z",
+          "endDate": "2024-06-10T00:00:00.000Z"
+        },
+        "department": {
+          "id": 2,
+          "name": "Finance"
+        }
+      }
+      // ...more assignments
+    ]
+  }
+  ```
+- **Note**: This endpoint is accessible to all authenticated users, including company admins, and returns all RACI assignments for the logged-in user, with pagination support.
 
 ## HOD Department Management
 
@@ -1308,13 +1404,19 @@ OR
 - **URL**: `/dashboard/company-admin`
 - **Method**: `GET`
 - **Auth required**: Yes (company_admin)
-- **Description**: Get statistics for company admin dashboard
+- **Description**: Get statistics and company details for company admin dashboard
 - **Success Response**:
   ```json
   {
     "company": {
+      "id": 1,
       "name": "Company Name",
-      "logoUrl": "/uploads/logo-filename.png"
+      "logoUrl": "/uploads/logo-filename.png",
+      "domain": "example.com",
+      "industry": "Technology",
+      "size": "100-500",
+      "createdAt": "2023-01-01T00:00:00Z",
+      "updatedAt": "2023-01-02T00:00:00Z"
     },
     "stats": {
       "users": {
@@ -1363,59 +1465,6 @@ OR
     "stats": {
       "users": 10,
       "events": {
-        "total": 20,
-        "pending": 5,
-        "approved": 10,
-        "rejected": 5
-      }
-    },
-    "recentEvents": [
-      {
-        "id": 1,
-        "name": "Event Name",
-        "createdBy": "User Name",
-        "status": "pending",
-        "createdAt": "2023-01-01T00:00:00Z"
-      }
-    ],
-    "pendingApprovals": [
-      {
-        "id": 2,
-        "name": "Event Name",
-        "createdAt": "2023-01-01T00:00:00Z"
-      }
-    ]
-  }
-  ```
-
-### Get User Dashboard Stats
-
-- **URL**: `/dashboard/user`
-- **Method**: `GET`
-- **Auth required**: Yes (any user)
-- **Description**: Get statistics for user dashboard
-- **Success Response**:
-  ```json
-  {
-    "stats": {
-      "events": {
-        "total": 10,
-        "pending": 3,
-        "approved": 5,
-        "rejected": 2
-      }
-    },
-    "recentEvents": [
-      {
-        "id": 1,
-        "name": "Event Name",
-        "department": "Department Name",
-        "status": "approved",
-        "createdAt": "2023-01-01T00:00:00Z"
-      }
-    ]
-  }
-  ```
         "total": 20,
         "pending": 5,
         "approved": 10,

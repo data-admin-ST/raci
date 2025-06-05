@@ -309,9 +309,18 @@ const EditDepartment = () => {
             <i className="icon">⚙️</i> Company Settings
           </NavLink>
           
-          <NavLink to="/" className="nav-item">
-            <i className="icon">🏠</i> Back to Home
-          </NavLink>
+          <button className="nav-item" onClick={handleLogout} style={{
+            width: '100%',
+            textAlign: 'left',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '0.75rem 1rem',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <i className="icon">🚪</i> Logout
+          </button>
         </nav>
       </aside>
       
@@ -328,9 +337,7 @@ const EditDepartment = () => {
                 <div className="user-role">Company Admin</div>
               </div>
             </div>
-            <button className="logout-btn" onClick={handleLogout}>
-              <span>🚪</span> Logout
-            </button>
+            {/* Logout button removed from header as it exists in the sidebar */}
           </div>
         </header>
         

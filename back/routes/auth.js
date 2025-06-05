@@ -24,4 +24,20 @@ router.post('/forgot-password', forgotPassword);
 router.post('/verify-otp', verifyOTP);
 router.post('/reset-password', resetPassword);
 
+// GET /api/auth/current-user
+router.get('/current-user', protect, async (req, res) => {
+  // You may want to fetch more user info from DB if needed
+  res.status(200).json({
+    success: true,
+    user: {
+      id: req.user.user_id,
+      name: req.user.full_name,
+      email: req.user.email,
+      role: req.user.role,
+      companyId: req.user.company_id,
+      // add more fields if needed
+    }
+  });
+});
+
 module.exports = router;

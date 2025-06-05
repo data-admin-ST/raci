@@ -16,27 +16,7 @@ dotenv.config();
 // Initialize app
 const app = express();
 
-// Global CORS middleware - Apply to all routes
-app.use((req, res, next) => {
-  // Set CORS headers for all responses
-  const origin = req.headers.origin;
-  if (origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Origin, Accept, X-Access-Token, X-API-Key');
-  res.setHeader('Access-Control-Expose-Headers', 'Content-Range, X-Content-Range');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
-    return res.status(204).end();
-  }
-  next();
-});
-
-// Apply CORS to all routes with our custom options
+// Apply CORS to all routes with our configuration
 app.use(cors(corsOptions));
 
 // Handle preflight requests for all routes
@@ -49,35 +29,20 @@ app.use(express.urlencoded({ extended: true }));
 // Setup request logger - must be after body parsers but before routes
 app.use(requestLogger);
 
-// Set static folder for uploads with CORS
-app.use('/uploads', (req, res, next) => {
-  const origin = req.headers.origin;
-  if (origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-}, express.static(path.join(__dirname, 'uploads')));
+// Set static folder for uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Create uploads directory if it doesn't exist
 if (!fs.existsSync(path.join(__dirname, 'uploads'))) {
   fs.mkdirSync(path.join(__dirname, 'uploads'), { recursive: true });
 }
 
-// Mount routers with CORS enabled
+// Mount routers
 const mountRouter = (path, router) => {
-  app.use(path, (req, res, next) => {
-    // Ensure CORS headers are set for each API route
-    const origin = req.headers.origin;
-    if (origin) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-  }, router);
+  app.use(path, router);
 };
 
-// Mount all routers with CORS enabled
+// Mount all routers
 mountRouter('/api/auth', require('./routes/auth'));
 mountRouter('/api/users', require('./routes/users'));
 mountRouter('/api/companies', require('./routes/companies'));

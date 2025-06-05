@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Settings = () => {
   const [generalSettings, setGeneralSettings] = useState({
-    platformName: 'RACI SaaS',
+    platformName: 'Sharp RACI',
     adminEmail: 'admin@racisaas.com',
     notificationsEnabled: true,
     automaticApprovals: false

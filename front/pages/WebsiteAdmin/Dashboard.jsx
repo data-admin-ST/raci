@@ -221,14 +221,42 @@ const WebsiteAdminDashboard = () => {
         console.log(`Found ${adminsData.length} company admins for company ID ${selectedCompanyId}:`, adminsData);
         
         // Ensure we have the correct data structure
-        const formattedAdmins = adminsData.map(admin => ({
-          id: admin.id,
-          name: admin.name || 'Unknown',
-          email: admin.email || '-',
-          phone: admin.phone || '-',
-          designation: admin.designation || 'Company Administrator',
-          role: admin.role || 'company_admin'
-        }));
+        const formattedAdmins = adminsData.map(admin => {
+          // More detailed debugging for phone number properties
+          console.log('Admin raw data:', admin);
+          console.log('Phone fields:', { 
+            phone: admin.phone, 
+            phoneNumber: admin.phoneNumber, 
+            contactNumber: admin.contactNumber,
+            mobileNumber: admin.mobileNumber,
+            contact: admin.contact && admin.contact.phone,
+            nestedPhone: admin.contact && admin.contact.number
+          });
+          
+          // Extract phone number with extended checking for nested properties
+          const phoneNumber = 
+            admin.phone || 
+            admin.phoneNumber || 
+            admin.contactNumber || 
+            admin.mobileNumber || 
+            (admin.contact && admin.contact.phone) || 
+            (admin.contact && admin.contact.number) ||
+            (typeof admin.phone === 'number' && String(admin.phone));
+          
+          // Ensure we don't display "null" or "undefined" as strings
+          const sanitizedPhone = phoneNumber && phoneNumber !== "null" && phoneNumber !== "undefined" 
+            ? phoneNumber 
+            : '';
+            
+          return {
+            id: admin.id,
+            name: admin.name || 'Unknown',
+            email: admin.email || '-',
+            phone: sanitizedPhone || '-', // Sanitized phone value
+            designation: admin.designation || 'Company Administrator',
+            role: admin.role || 'company_admin'
+          };
+        });
         
         setCompanyAdmins(formattedAdmins);
       } catch (error) {
@@ -271,6 +299,19 @@ const WebsiteAdminDashboard = () => {
       fetchCompanyAdmins();
     }
   }, [selectedCompanyId]);
+
+  // Add this helper function to check if dates are effectively the same
+  const areDatesEffectivelySame = (date1, date2) => {
+    if (!date1 || !date2) return false;
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    // Compare only year, month, day, hour, minute to consider them the same
+    return d1.getFullYear() === d2.getFullYear() &&
+           d1.getMonth() === d2.getMonth() &&
+           d1.getDate() === d2.getDate() &&
+           d1.getHours() === d2.getHours() &&
+           d1.getMinutes() === d2.getMinutes();
+  };
 
   // Handle company edit - Fix the navigation path
   const handleEditCompany = (id) => {
@@ -341,7 +382,7 @@ const WebsiteAdminDashboard = () => {
       <aside className="sidebar">
         <div className="brand">
           <span className="brand-logo">🔄</span>
-          <span className="brand-name">RACI SaaS</span>
+          <span className="brand-name">Sharp RACI</span>
         </div>
         <nav>
           <NavLink to="/website-admin/dashboard" className="nav-item">
@@ -365,9 +406,9 @@ const WebsiteAdminDashboard = () => {
             </NavLink>
           </div>
           
-          <NavLink to="/" className="nav-item">
-            <i className="icon">🏠</i> Back to Home
-          </NavLink>
+          <button className="nav-item" onClick={handleLogout} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>
+            <i className="icon">🚪</i> Logout
+          </button>
         </nav>
       </aside>
       
@@ -396,9 +437,7 @@ const WebsiteAdminDashboard = () => {
                 </>
               )}
             </div>
-            <button className="logout-btn" onClick={handleLogout}>
-              <span>🚪</span> Logout
-            </button>
+            {/* Logout button removed from header as it exists in the sidebar */}
           </div>
         </header>
         
@@ -486,10 +525,12 @@ const WebsiteAdminDashboard = () => {
                             {/* Industry header - existing code */}
                             <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Industry</th>
                             
-                            {/* Size header - existing code */}
-                            <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Size</th>
+                            {/* Renamed Size header to No. of Employees */}
+                            <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>No. of Employees</th>
                             <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Admins</th>
                             <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Created</th>
+                            {/* New column for Updated At */}
+                            <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Updated</th>
                             <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Actions</th>
                           </tr>
                         </thead>
@@ -504,13 +545,13 @@ const WebsiteAdminDashboard = () => {
                                   {company.logoUrl ? (
                                     <div style={{ width: '40px', height: '40px', borderRadius: '6px', overflow: 'hidden', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #e5e7eb' }}>
                                       <img 
-                                        src={`${env.apiBaseUrl}${company.logoUrl}`} 
+                                        src={`${env.apiHost}${company.logoUrl}`} 
                                         alt={`${company.name} logo`} 
                                         style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
-                                        onError={(e) => {
-                                          e.target.onerror = null; 
-                                          e.target.src = 'https://via.placeholder.com/40?text=' + company.name.charAt(0);
-                                        }}
+                                        // onError={(e) => {
+                                        //   e.target.onerror = null; 
+                                        //   e.target.src = 'https://via.placeholder.com/40?text=' + company.name.charAt(0);
+                                        // }}
                                       />
                                     </div>
                                   ) : (
@@ -519,19 +560,18 @@ const WebsiteAdminDashboard = () => {
                                     </div>
                                   )}
                                 </td>
+
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500' }}>{company.name}</td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>{company.domain}</td>
                                 
-                                {/* Industry cell - enhanced access */}
+                                {/* Industry cell - improved access with better visibility */}
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                                  {typeof company === 'object' && 'industry' in company ? company.industry : 
-                                   company.Industry ? company.Industry : '-'}
+                                  {company.industry || company.Industry || '-'}
                                 </td>
                                 
-                                {/* Size cell - enhanced access */}
+                                {/* Size cell - renamed to No. of Employees with improved access */}
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
-                                  {typeof company === 'object' && 'size' in company ? company.size : 
-                                   company.Size ? company.Size : '-'}
+                                  {company.size || company.Size || '-'}
                                 </td>
                                 
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
@@ -547,11 +587,24 @@ const WebsiteAdminDashboard = () => {
                                   </span>
                                 </td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#6b7280' }}>
-                                  {company.createdAt ? new Date(company.createdAt).toLocaleDateString(undefined, { 
+                                  {company.createdAt ? new Date(company.createdAt).toLocaleString(undefined, { 
                                     year: 'numeric', 
                                     month: 'short', 
-                                    day: 'numeric' 
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
                                   }) : '-'}
+                                </td>
+                                {/* Updated column - show dash if same as created date */}
+                                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#6b7280' }}>
+                                  {(company.updatedAt && !areDatesEffectivelySame(company.createdAt, company.updatedAt)) ? 
+                                    new Date(company.updatedAt).toLocaleString(undefined, { 
+                                      year: 'numeric', 
+                                      month: 'short', 
+                                      day: 'numeric',
+                                      hour: '2-digit',
+                                      minute: '2-digit'
+                                    }) : '-'}
                                 </td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
                                   <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -689,7 +742,21 @@ const WebsiteAdminDashboard = () => {
                               <tr key={admin.id || index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500' }}>{admin.name || "Unknown"}</td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>{admin.email || "-"}</td>
-                                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>{admin.phone || "-"}</td>
+                                {/* Phone cell with improved display and debug info */}
+                                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <span>
+                                      {admin.phone && admin.phone !== '-' ? 
+                                        admin.phone : 
+                                        (admin.phoneNumber || admin.contactNumber || admin.mobileNumber || "-")}
+                                    </span>
+                                    {admin.phone === '-' && (
+                                      <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.25rem' }}>
+                                        No phone provided
+                                      </span>
+                                    )}
+                                  </div>
+                                </td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>{admin.designation || "Company Administrator"}</td>
                                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
                                   <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -774,4 +841,3 @@ const WebsiteAdminDashboard = () => {
 };
 
 export default WebsiteAdminDashboard;
-       

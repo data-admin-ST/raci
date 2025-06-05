@@ -325,146 +325,78 @@ const RACIAssignment = () => {
   // Add a new state for event tasks
   const [eventTasks, setEventTasks] = useState([]);
 
-  // Fix the saveRaciMatrix function to match the expected API payload format
+  // Fix: Save all financial limits for all employees per role per task in the payload
+
   const saveRaciMatrix = async () => {
     if (!selectedEvent) {
       setError('Please select an event first');
       return;
     }
-    
+
     try {
       setSaving(true);
       setError('');
       setSuccess('');
-      
-      console.log('Saving RACI matrix for event:', selectedEvent);
-      console.log('Current financial limits:', financialLimits);
-      console.log('Current financial limit values:', financialLimitValues);
-      
-      // Create payload with the format backend expects
+
+      console.log('Preparing RACI matrix for event:', selectedEvent);
+      console.log('Current financial limits state:', financialLimits);
+      console.log('Financial limit values:', financialLimitValues);
+
+      // Build the payload with the correct API structure
       const payload = {
         eventId: selectedEvent,
         taskAssignments: tasks.map(task => {
-          // For each task, format the assignments according to API specs
           const taskAssignment = {
             taskId: task.id,
             responsible: [],
             accountable: [],
             consulted: [],
-            informed: []
+            informed: [],
+            financialLimits: {} // Using correct format per API docs
           };
-          
-          // Add responsible assignment if present
-          if (selectedEmployees.responsible[task.id]) {
-            const userId = selectedEmployees.responsible[task.id];
-            taskAssignment.responsible.push(userId);
-            
-            // Add financial limit if set
-            if (financialLimits[`responsible-${task.id}-${userId}`]) {
-              const limitValue = Number(financialLimitValues[`responsible-${task.id}-${userId}`]) || 0;
+
+          // Process each RACI role for this task
+          ['responsible', 'accountable', 'consulted', 'informed'].forEach(role => {
+            // Get users for this role (support both array and single value formats)
+            const users = Array.isArray(selectedEmployees[role][task.id])
+              ? selectedEmployees[role][task.id]
+              : selectedEmployees[role][task.id]
+                ? [selectedEmployees[role][task.id]]
+                : [];
+
+            // Add each user to the appropriate role array
+            users.forEach(userId => {
+              if (!userId) return;
               
-              // Store financial limit data directly in the RACI data structure
-              if (!taskAssignment.financialLimits) {
-                taskAssignment.financialLimits = {};
+              taskAssignment[role].push(userId);
+              
+              // Check for financial limits
+              const key = `${role}-${task.id}-${userId}`;
+              if (financialLimits[key]) {
+                // Get the financial limit value
+                const limitValue = Number(financialLimitValues[key]) || 0;
+                
+                // Use the exact format required by the API:
+                // Format: "task-{taskId}-{role}-{userId}"
+                const formattedKey = `task-${task.id}-${role}-${userId}`;
+                
+                // Create the financial limit object with min/max values
+                taskAssignment.financialLimits[formattedKey] = {
+                  min: 0, // Starting value
+                  max: limitValue // Maximum limit
+                };
+                
+                console.log(`Added financial limit for ${role} ${userId} on task ${task.id}: min=0, max=${limitValue}`);
               }
-              
-              // Use the exact key format backend expects
-              taskAssignment.financialLimits[userId] = {
-                value: limitValue,
-                min: 0,
-                max: limitValue,
-                role: "R",
-                taskId: task.id
-              };
-              
-              console.log(`Adding financial limit for responsible ${userId} on task ${task.id}: ${limitValue}`);
-            }
-          }
-          
-          // Add accountable assignment if present
-          if (selectedEmployees.accountable[task.id]) {
-            const userId = selectedEmployees.accountable[task.id];
-            taskAssignment.accountable.push(userId);
-            
-            // Add financial limit if set
-            if (financialLimits[`accountable-${task.id}-${userId}`]) {
-              const limitValue = Number(financialLimitValues[`accountable-${task.id}-${userId}`]) || 0;
-              
-              // Store financial limit data directly in the RACI data structure
-              if (!taskAssignment.financialLimits) {
-                taskAssignment.financialLimits = {};
-              }
-              
-              taskAssignment.financialLimits[userId] = {
-                value: limitValue,
-                min: 0,
-                max: limitValue,
-                role: "A",
-                taskId: task.id
-              };
-              
-              console.log(`Adding financial limit for accountable ${userId} on task ${task.id}: ${limitValue}`);
-            }
-          }
-          
-          // Add consulted assignment if present
-          if (selectedEmployees.consulted[task.id]) {
-            const userId = selectedEmployees.consulted[task.id];
-            taskAssignment.consulted.push(userId);
-            
-            // Add financial limit if set
-            if (financialLimits[`consulted-${task.id}-${userId}`]) {
-              const limitValue = Number(financialLimitValues[`consulted-${task.id}-${userId}`]) || 0;
-              
-              // Store financial limit data directly in the RACI data structure
-              if (!taskAssignment.financialLimits) {
-                taskAssignment.financialLimits = {};
-              }
-              
-              taskAssignment.financialLimits[userId] = {
-                value: limitValue,
-                min: 0,
-                max: limitValue,
-                role: "C",
-                taskId: task.id
-              };
-              
-              console.log(`Adding financial limit for consulted ${userId} on task ${task.id}: ${limitValue}`);
-            }
-          }
-          
-          // Add informed assignment if present
-          if (selectedEmployees.informed[task.id]) {
-            const userId = selectedEmployees.informed[task.id];
-            taskAssignment.informed.push(userId);
-            
-            // Add financial limit if set
-            if (financialLimits[`informed-${task.id}-${userId}`]) {
-              const limitValue = Number(financialLimitValues[`informed-${task.id}-${userId}`]) || 0;
-              
-              // Store financial limit data directly in the RACI data structure
-              if (!taskAssignment.financialLimits) {
-                taskAssignment.financialLimits = {};
-              }
-              
-              taskAssignment.financialLimits[userId] = {
-                value: limitValue,
-                min: 0,
-                max: limitValue,
-                role: "I",
-                taskId: task.id
-              };
-              
-              console.log(`Adding financial limit for informed ${userId} on task ${task.id}: ${limitValue}`);
-            }
-          }
-          
+            });
+          });
+
           return taskAssignment;
         })
       };
-      
+
       console.log('RACI Matrix payload:', JSON.stringify(payload, null, 2));
-      
+
       // Make API request to save RACI matrix
       const token = localStorage.getItem('raci_auth_token');
       const response = await fetch(`${env.apiBaseUrl}/raci-matrices`, {
@@ -476,51 +408,37 @@ const RACIAssignment = () => {
         },
         body: JSON.stringify(payload)
       });
-      
-      // If response is not OK, try to get detailed error information
+
       if (!response.ok) {
         let errorMessage = `Failed to save RACI matrix: ${response.status}`;
-        
         try {
           const errorBody = await response.text();
-          console.error('Error response body:', errorBody);
-          
+          console.error('Error response from API:', errorBody);
           try {
-            // Try to parse as JSON if possible
             const errorData = JSON.parse(errorBody);
             errorMessage = errorData.message || errorData.error || errorMessage;
           } catch (e) {
-            // If not JSON, use the text as is
             if (errorBody && errorBody.trim()) {
               errorMessage = `Error: ${errorBody.trim()}`;
             }
           }
-        } catch (e) {
-          console.error('Could not read error response:', e);
-        }
-        
+        } catch (e) {}
         throw new Error(errorMessage);
       }
-      
-      // Parse and handle the successful response
+
       const data = await response.json();
       console.log('RACI matrix saved successfully:', data);
       
       setSuccess('RACI matrix saved successfully!');
       
-      // Store the RACI matrix ID for future reference if returned by API
       if (data && data.id) {
         localStorage.setItem(`event_${selectedEvent}_raci_id`, data.id);
       }
-      
-      // If we have an eventId in the response, we can use it for later retrieval
       if (data && data.eventId) {
         localStorage.setItem(`raci_matrix_event_${selectedEvent}`, data.eventId);
       }
       
-      // Add function to load existing RACI matrix when an event is selected
       loadExistingRaciMatrix(selectedEvent);
-      
     } catch (error) {
       console.error('Error saving RACI matrix:', error);
       setError(error.message || 'Failed to save RACI matrix. Please try again.');
@@ -695,10 +613,13 @@ const RACIAssignment = () => {
           const key = `${role}-${taskId}-${user.id}`;
           newFinancialLimits[key] = true;
           
-          if (user.financialLimits.min !== undefined) {
-            newFinancialLimitValues[key] = user.financialLimits.min;
+          // Prioritize max value, then value, then min
+          if (user.financialLimits.max !== undefined) {
+            newFinancialLimitValues[key] = user.financialLimits.max;
           } else if (user.financialLimits.value !== undefined) {
             newFinancialLimitValues[key] = user.financialLimits.value;
+          } else if (user.financialLimits.min !== undefined) {
+            newFinancialLimitValues[key] = user.financialLimits.min;
           }
         }
       });
@@ -1068,11 +989,13 @@ const RACIAssignment = () => {
         [key]: !prev[key]
       };
       
-      // If turning on a financial limit and no value is set, initialize with 0
+      // If turning on a financial limit and no value is set, check DB value first
       if (newState[key] && !financialLimitValues[key]) {
+        // Try to fetch from API if needed, otherwise initialize with reasonable default
+        // For now, we'll use existing values or initialize with empty string (to show placeholder)
         setFinancialLimitValues(prevValues => ({
           ...prevValues,
-          [key]: '0'
+          [key]: prevValues[key] || ''
         }));
       }
       
@@ -1107,13 +1030,13 @@ const RACIAssignment = () => {
             const key = `${role}-${taskId}-${userId}`;
             financialLimitMap[key] = true;
             
-            // Extract the financial limit value (could be in different formats)
-            if (user.financialLimits.value !== undefined) {
+            // Extract the financial limit value prioritizing max value
+            if (user.financialLimits.max !== undefined) {
+              financialLimitValueMap[key] = String(user.financialLimits.max);
+            } else if (user.financialLimits.value !== undefined) {
               financialLimitValueMap[key] = String(user.financialLimits.value);
             } else if (user.financialLimits.min !== undefined) {
               financialLimitValueMap[key] = String(user.financialLimits.min);
-            } else if (user.financialLimits.max !== undefined) {
-              financialLimitValueMap[key] = String(user.financialLimits.max);
             }
             
             console.log(`Found financial limit for ${role} ${userId} on task ${taskId}: ${financialLimitValueMap[key]}`);

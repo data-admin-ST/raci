@@ -110,14 +110,25 @@ const CompanyAdminLayout = ({ children, companyData }) => {
             <span className="icon">⚙️</span>
             <span>Settings</span>
           </NavLink>
-        </nav>
-        
-        <div className="sidebar-footer">
-          <button onClick={handleLogout} className="logout-button">
+          <button onClick={handleLogout} className="sidebar-nav-item" style={{
+            display: 'flex',
+            alignItems: 'center',
+            padding: '0.75rem 1rem',
+            color: '#374151',
+            textDecoration: 'none',
+            borderRadius: '0.375rem',
+            marginBottom: '0.25rem',
+            border: 'none',
+            background: 'none',
+            width: '100%',
+            textAlign: 'left',
+            cursor: 'pointer'
+          }}>
             <span className="icon">🚪</span>
             <span>Logout</span>
           </button>
-        </div>
+        </nav>
+        
       </aside>
       
       <main className="dashboard-content">
@@ -130,6 +141,7 @@ const CompanyAdminLayout = ({ children, companyData }) => {
               <span className="user-name">Admin</span>
               <div className="user-avatar">A</div>
             </div>
+            {/* Logout button removed from header as it exists in the sidebar */}
           </div>
         </header>
         

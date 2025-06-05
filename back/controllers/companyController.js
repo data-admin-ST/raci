@@ -57,7 +57,7 @@ exports.getCompanies = async (req, res, next) => {
 
     // Build query with search filter
     let query = `
-      SELECT c.company_id, c.name, c.logo_url, c.domain, c.created_at,
+      SELECT c.company_id, c.name, c.logo_url, c.domain, c.industry, c.size, c.created_at, c.updated_at,
       COUNT(u.user_id) FILTER (WHERE u.role = 'company_admin') as admins_count
       FROM companies c
       LEFT JOIN users u ON c.company_id = u.company_id
@@ -83,8 +83,11 @@ exports.getCompanies = async (req, res, next) => {
       name: company.name,
       logoUrl: company.logo_url,
       domain: company.domain,
+      industry: company.industry,
+      size: company.size,
       adminsCount: parseInt(company.admins_count),
-      createdAt: company.created_at
+      createdAt: company.created_at,
+      updatedAt: company.updated_at
     }));
 
     res.status(200).json({

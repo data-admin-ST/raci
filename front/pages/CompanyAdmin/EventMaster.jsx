@@ -11,7 +11,8 @@ const EventMaster = () => {
     name: '',
     description: '',
     departmentId: '',
-    document: null
+    document: null,
+    hod: '' // Added new HOD field
   });
   
   // State for selected employees
@@ -171,10 +172,15 @@ const EventMaster = () => {
     }
   };
   
+  // Add new state for storing department HODs
+  const [departmentHODs, setDepartmentHODs] = useState([]);
+  const [selectedHODs, setSelectedHODs] = useState([]);
+  
   // Fetch employees for a specific department - Improved implementation
   const fetchEmployees = async (departmentId) => {
     if (!departmentId) {
       setFilteredEmployees([]);
+      setDepartmentHODs([]);
       return;
     }
     
@@ -199,22 +205,49 @@ const EventMaster = () => {
       console.log('Department data:', departmentData);
       
       if (departmentData && departmentData.employees) {
+        // Set all employees
         setEmployees(departmentData.employees);
         setFilteredEmployees(departmentData.employees);
         console.log('Employees loaded:', departmentData.employees.length);
+        
+        // Find HODs in this department - look for employees with role: 'hod'
+        const hods = departmentData.employees.filter(emp => emp.role === 'hod');
+        setDepartmentHODs(hods);
+        console.log('Department HODs:', hods);
+        
+        // If department has a main HOD, add it
+        if (departmentData.hod) {
+          if (!hods.some(h => h.id === departmentData.hod.id)) {
+            setDepartmentHODs(prev => [...prev, departmentData.hod]);
+          }
+        }
       } else {
         console.warn('No employees found in department');
         setEmployees([]);
         setFilteredEmployees([]);
+        setDepartmentHODs([]);
       }
     } catch (error) {
       console.error('Failed to load employees:', error);
       setError('Failed to load employees for this department.');
       setEmployees([]);
       setFilteredEmployees([]);
+      setDepartmentHODs([]);
     } finally {
       setLoadingEmployees(false);
     }
+  };
+  
+  // Add handler for HOD selection
+  const handleHODSelect = (event) => {
+    const selectedOptions = Array.from(event.target.selectedOptions, option => option.value);
+    setSelectedHODs(selectedOptions);
+    
+    // Update the form with the selected HOD IDs as a comma-separated string
+    setEventForm(prev => ({
+      ...prev,
+      hod: selectedOptions.join(',')
+    }));
   };
   
   // Fetch events - Improved implementation
@@ -432,6 +465,7 @@ const EventMaster = () => {
         name: eventForm.name,
         description: eventForm.description || '',
         departmentId: eventForm.departmentId,
+        hod: eventForm.hod || '', // This now contains comma-separated HOD IDs
         employees: selectedEmployees,
         tasks: eventSubtasks.map(subtask => ({
           name: subtask.name,
@@ -528,10 +562,12 @@ const EventMaster = () => {
         name: '',
         description: '',
         departmentId: '',
-        document: null
+        document: null,
+        hod: '' 
       });
       setSelectedEmployees([]);
       setEventSubtasks([]);
+      setSelectedHODs([]);
       
       // Reset file input
       const fileInput = document.getElementById('document');
@@ -603,6 +639,37 @@ const EventMaster = () => {
   // Add function to remove subtask from event
   const removeSubtaskFromEvent = (subtaskId) => {
     setEventSubtasks(prev => prev.filter(subtask => subtask.id !== subtaskId));
+  };
+
+  // Add the missing requestHODApproval function
+  const requestHODApproval = async () => {
+    if (!eventForm.departmentId) {
+      setError('Please select a department first');
+      return;
+    }
+    
+    try {
+      setSubmitting(true);
+      setError('');
+      
+      // Logic to automatically set the department's HOD as the approver
+      // You would typically make an API call here to set the approver
+      
+      // For now, just select all HODs in the department
+      const allHODIds = departmentHODs.map(hod => hod.id);
+      setSelectedHODs(allHODIds);
+      setEventForm(prev => ({
+        ...prev,
+        hod: allHODIds.join(',')
+      }));
+      
+      setSuccess('HOD approval requested successfully. The department HODs have been set as approvers.');
+    } catch (error) {
+      console.error('Error requesting HOD approval:', error);
+      setError('Failed to request HOD approval. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   // Add missing state for the separate subtask form (for existing events)
@@ -983,9 +1050,18 @@ const EventMaster = () => {
               <i className="icon">⚙️</i> Company Settings
             </NavLink>
             
-            <NavLink to="/" className="nav-item">
-              <i className="icon">🏠</i> Back to Home
-            </NavLink>
+            <button className="nav-item" onClick={handleLogout} style={{
+              width: '100%',
+              textAlign: 'left',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.75rem 1rem',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <i className="icon">🚪</i> Logout
+            </button>
           </nav>
         </aside>
         
@@ -1002,9 +1078,7 @@ const EventMaster = () => {
                   <div className="user-role">Company Admin</div>
                 </div>
               </div>
-              <button className="logout-btn" onClick={handleLogout}>
-                <span>🚪</span> Logout
-              </button>
+              {/* Logout button removed from header as it exists in the sidebar */}
             </div>
           </header>
           
@@ -1105,6 +1179,41 @@ const EventMaster = () => {
                     <div style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#b91c1c' }}>
                       No departments found. Please create a department first.
                     </div>
+                  )}
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="hod" style={{ display: 'block', marginBottom: '0.5rem' }}>HOD (Optional)</label>
+                  <select
+                    id="hod"
+                    name="hod"
+                    multiple
+                    value={selectedHODs}
+                    onChange={handleHODSelect}
+                    disabled={loadingEmployees || departmentHODs.length === 0}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      fontSize: '1rem',
+                      boxSizing: 'border-box',
+                      minHeight: '120px'
+                    }}
+                  >
+                    {departmentHODs.map(hod => (
+                      <option key={hod.id} value={hod.id}>
+                        {hod.name} {hod.designation ? `(${hod.designation})` : '(HOD)'}
+                      </option>
+                    ))}
+                  </select>
+                  <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.25rem' }}>
+                    Hold Ctrl (or Cmd) to select multiple HODs. HODs from the selected department will appear here.
+                  </p>
+                  {departmentHODs.length === 0 && eventForm.departmentId && !loadingEmployees && (
+                    <p style={{ fontSize: '0.875rem', color: '#b91c1c', marginTop: '0.25rem' }}>
+                      No HODs found for this department. Please assign HODs in Department Management.
+                    </p>
                   )}
                 </div>
                 
@@ -1602,15 +1711,34 @@ const EventMaster = () => {
                 }}>
                   <button 
                     type="button" 
+                    onClick={requestHODApproval}
+                    disabled={submitting || !eventForm.departmentId}
+                    style={{ 
+                      padding: '0.75rem 1.25rem', 
+                      background: '#10b981',
+                      color: 'white', 
+                      border: 'none', 
+                      borderRadius: '8px',
+                      fontWeight: '500',
+                      cursor: submitting || !eventForm.departmentId ? 'not-allowed' : 'pointer',
+                      marginRight: 'auto'
+                    }}
+                  >
+                    Request HOD Approval
+                  </button>
+                  <button 
+                    type="button" 
                     onClick={() => {
                       setEventForm({
                         name: '',
                         description: '',
                         departmentId: '',
-                        document: null
+                        document: null,
+                        hod: ''
                       });
                       setSelectedEmployees([]);
-                      setEventSubtasks([]); // Reset subtasks
+                      setEventSubtasks([]);
+                      setSelectedHODs([]);
                       setError('');
                       setSuccess('');
                       

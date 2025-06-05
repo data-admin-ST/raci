@@ -63,64 +63,69 @@ const UserManagement = () => {
     fetchDepartments();
   }, [companyId]);
 
+  // Enhanced refresh function to reload data after operations
+  const refreshData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Build query string for filters
+      let queryParams = `companyId=${companyId}`;
+      if (filters.departmentId) queryParams += `&departmentId=${filters.departmentId}`;
+      if (filters.role) queryParams += `&role=${filters.role}`;
+      if (filters.search) queryParams += `&search=${encodeURIComponent(filters.search)}`;
+      
+      const token = localStorage.getItem('raci_auth_token');
+      const response = await fetch(`${env.apiBaseUrl}/users?${queryParams}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Refreshed users data:', data);
+      
+      // Extract users from response
+      let usersList = [];
+      if (data && data.users) {
+        usersList = data.users;
+      } else if (Array.isArray(data)) {
+        usersList = data;
+      }
+      
+      // Process each user to ensure data is formatted correctly
+      const processedUsers = usersList.map(user => ({
+        ...user,
+        location: user.location || 'Not specified',
+        createdAt: user.createdAt || null,
+        updatedAt: user.updatedAt || null
+      }));
+      
+      setUsers(processedUsers);
+    } catch (error) {
+      console.error('Error refreshing users:', error);
+      setError('Failed to refresh users. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Load users with filters
   useEffect(() => {
     if (!companyId) return;
-
-    const fetchUsers = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        // Build query string for filters
-        let queryParams = `companyId=${companyId}`;
-        if (filters.departmentId) queryParams += `&departmentId=${filters.departmentId}`;
-        if (filters.role) queryParams += `&role=${filters.role}`;
-        if (filters.search) queryParams += `&search=${encodeURIComponent(filters.search)}`;
-        
-        // Direct fetch to handle errors better
-        const token = localStorage.getItem('raci_auth_token');
-        const response = await fetch(`${env.apiBaseUrl}/users?${queryParams}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Users data:', data);
-        
-        // Extract users from response
-        let usersList = [];
-        if (data && data.users) {
-          usersList = data.users;
-        } else if (Array.isArray(data)) {
-          usersList = data;
-        }
-        
-        setUsers(usersList);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-        setError('Failed to load users. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (companyId) {
-      fetchUsers();
-    }
+    refreshData();
     
     // Check if we need to refresh data when returning from create/edit
     if (location.state?.refreshData) {
-      fetchUsers();
+      refreshData();
       navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [companyId, filters, location, navigate]);
+  }, [companyId, filters, location.state?.refreshData]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -141,13 +146,45 @@ const UserManagement = () => {
     if (window.confirm(`Are you sure you want to delete ${userName}? This action cannot be undone.`)) {
       try {
         await apiService.delete(`/users/${userId}`);
-        // Remove user from list
-        setUsers(prev => prev.filter(user => user.id !== userId));
+        // Remove user from list and refresh data to ensure accuracy
+        refreshData();
       } catch (error) {
         console.error(`Failed to delete user ${userId}:`, error);
         alert('Failed to delete user. Please try again.');
       }
     }
+  };
+
+  // Enhanced format date function helper
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Not specified';
+    try {
+      return new Date(dateString).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false // Use 24-hour format
+      });
+    } catch (error) {
+      console.error('Date formatting error:', error);
+      return 'Invalid date';
+    }
+  };
+  
+  // Function to compare dates and determine if we should show modified date
+  const shouldShowModifiedDate = (createdAt, updatedAt) => {
+    if (!createdAt || !updatedAt) return false;
+    
+    // Parse dates and compare them
+    const created = new Date(createdAt).getTime();
+    const updated = new Date(updatedAt).getTime();
+    
+    // If dates are within 1 second of each other, consider them the same
+    // (to handle slight server timestamp differences)
+    return Math.abs(updated - created) > 1000;
   };
 
   return (
@@ -205,7 +242,7 @@ const UserManagement = () => {
               style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #d1d5db' }}
             >
               <option value="">All Roles</option>
-              <option value="user">Regular Users</option>
+              <option value="user">User</option>
               <option value="company_admin">Company Admins</option>
               <option value="hod">Department Heads</option>
             </select>
@@ -256,6 +293,10 @@ const UserManagement = () => {
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Email</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Role</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Department</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Designation</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Location</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Created At</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Modified At</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Actions</th>
                 </tr>
               </thead>
@@ -284,6 +325,20 @@ const UserManagement = () => {
                     </td>
                     <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
                       {user.department ? user.department.name : '-'}
+                    </td>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                      {user.designation || 'N/A'}
+                    </td>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                      {user.location || 'Not specified'}
+                    </td>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                      {formatDate(user.createdAt)}
+                    </td>
+                    <td>
+                      {shouldShowModifiedDate(user.createdAt, user.updatedAt) 
+                        ? formatDate(user.updatedAt) 
+                        : "-"}
                     </td>
                     <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
                       <div style={{ display: 'flex', gap: '0.5rem' }}>

@@ -108,9 +108,9 @@ exports.getAllDepartments = async (req, res, next) => {
 
     // Get departments with HOD and employee count
     const { rows } = await db.query(
-      `SELECT d.department_id, d.name, d.hod_id,
+      `SELECT d.department_id, d.name, d.hod_id, d.created_at, d.updated_at,
       u.full_name as hod_name,
-      COUNT(e.user_id) as employees_count
+      COUNT(e.user_id) FILTER (WHERE e.role = 'user') as employees_count
       FROM departments d
       LEFT JOIN users u ON d.hod_id = u.user_id
       LEFT JOIN users e ON d.department_id = e.department_id
@@ -128,7 +128,9 @@ exports.getAllDepartments = async (req, res, next) => {
         id: dept.hod_id,
         name: dept.hod_name
       } : null,
-      employeesCount: parseInt(dept.employees_count)
+      employeesCount: parseInt(dept.employees_count),
+      createdAt: dept.created_at,
+      updatedAt: dept.updated_at
     }));
 
     res.status(200).json(departments);

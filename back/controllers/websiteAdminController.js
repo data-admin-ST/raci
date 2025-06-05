@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 const prisma = require('../lib/prisma');
 const { generateToken, generateRefreshToken } = require('../utils/jwtUtils');
 const logger = require('../utils/logger');
+const fs = require('fs');
+const path = require('path');
 
 // @desc    Get all website admins
 // @route   GET /api/website-admins
@@ -64,6 +66,12 @@ exports.getWebsiteAdminById = async (req, res, next) => {
 exports.createWebsiteAdmin = async (req, res, next) => {
   try {
     const { fullName, email, phone, password } = req.body;
+    let photoUrl = null;
+
+    // Handle photo upload if provided
+    if (req.file) {
+      photoUrl = `/uploads/${req.file.filename}`;
+    }
 
     // Check if admin with this email already exists
     const existingAdmin = await prisma.websiteAdmin.findUnique({
@@ -71,6 +79,12 @@ exports.createWebsiteAdmin = async (req, res, next) => {
     });
 
     if (existingAdmin) {
+      // If there was a file upload and an error occurs, clean up the uploaded file
+      if (req.file) {
+        fs.unlink(req.file.path, err => {
+          if (err) console.error('Failed to delete uploaded file:', err);
+        });
+      }
       return res.status(400).json({
         success: false,
         message: 'Admin with this email already exists'
@@ -87,13 +101,15 @@ exports.createWebsiteAdmin = async (req, res, next) => {
         fullName,
         email,
         phone,
-        password: hashedPassword
+        password: hashedPassword,
+        photo: photoUrl
       },
       select: {
         id: true,
         fullName: true,
         email: true,
         phone: true,
+        photo: true,
         createdAt: true
       }
     });
@@ -103,6 +119,12 @@ exports.createWebsiteAdmin = async (req, res, next) => {
       data: admin
     });
   } catch (error) {
+    // If there was a file upload and an error occurs, clean up the uploaded file
+    if (req.file) {
+      fs.unlink(req.file.path, err => {
+        if (err) console.error('Failed to delete uploaded file:', err);
+      });
+    }
     next(error);
   }
 };
@@ -114,6 +136,26 @@ exports.updateWebsiteAdmin = async (req, res, next) => {
   try {
     const adminId = parseInt(req.params.id);
     const { fullName, phone } = req.body;
+    let photoUrl = undefined;
+
+    // Handle photo upload if provided
+    if (req.file) {
+      photoUrl = `/uploads/${req.file.filename}`;
+      
+      // Check if admin exists and has a previous photo
+      const existingAdmin = await prisma.websiteAdmin.findUnique({
+        where: { id: adminId },
+        select: { photo: true }
+      });
+
+      if (existingAdmin && existingAdmin.photo) {
+        // Delete previous photo file if it exists
+        const oldPhotoPath = path.join(__dirname, '..', existingAdmin.photo);
+        if (fs.existsSync(oldPhotoPath)) {
+          fs.unlinkSync(oldPhotoPath);
+        }
+      }
+    }
 
     // Check if admin exists
     const existingAdmin = await prisma.websiteAdmin.findUnique({
@@ -121,6 +163,12 @@ exports.updateWebsiteAdmin = async (req, res, next) => {
     });
 
     if (!existingAdmin) {
+      // If there was a file upload and an error occurs, clean up the uploaded file
+      if (req.file) {
+        fs.unlink(req.file.path, err => {
+          if (err) console.error('Failed to delete uploaded file:', err);
+        });
+      }
       return res.status(404).json({
         success: false,
         message: 'Website admin not found'
@@ -132,13 +180,15 @@ exports.updateWebsiteAdmin = async (req, res, next) => {
       where: { id: adminId },
       data: {
         fullName: fullName || undefined,
-        phone: phone || undefined
+        phone: phone || undefined,
+        photo: photoUrl
       },
       select: {
         id: true,
         fullName: true,
         email: true,
         phone: true,
+        photo: true,
         createdAt: true,
         updatedAt: true
       }
@@ -149,6 +199,12 @@ exports.updateWebsiteAdmin = async (req, res, next) => {
       data: admin
     });
   } catch (error) {
+    // If there was a file upload and an error occurs, clean up the uploaded file
+    if (req.file) {
+      fs.unlink(req.file.path, err => {
+        if (err) console.error('Failed to delete uploaded file:', err);
+      });
+    }
     next(error);
   }
 };
@@ -245,7 +301,8 @@ exports.login = async (req, res, next) => {
         name: admin.fullName,
         email: admin.email,
         role: 'website_admin',
-        phone: admin.phone
+        phone: admin.phone,
+        photo: admin.photo
       }
     });
   } catch (error) {

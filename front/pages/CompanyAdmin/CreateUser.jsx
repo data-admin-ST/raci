@@ -15,7 +15,9 @@ const CreateUser = () => {
     phone: '',
     employeeId: '',
     departmentId: '',
-    companyId: ''
+    companyId: '',
+    location: '',  // Added location field
+    hodId: ''      // Added hodId field
   });
   
   const [tempPassword, setTempPassword] = useState('');
@@ -24,6 +26,8 @@ const CreateUser = () => {
   const [companyData, setCompanyData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loadingDepts, setLoadingDepts] = useState(true);
+  const [loadingHODs, setLoadingHODs] = useState(false);  // Added loading state for HODs
+  const [hods, setHODs] = useState([]);  // Added state for HODs
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   // Add expanded sections state for sidebar
@@ -106,6 +110,40 @@ const CreateUser = () => {
           } finally {
             setLoadingDepts(false);
           }
+          
+          // Fetch HODs
+          try {
+            setLoadingHODs(true);
+            const token = localStorage.getItem('raci_auth_token');
+            const response = await fetch(`${env.apiBaseUrl}/users?role=hod&companyId=${userData.company.id}`, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+              }
+            });
+            
+            if (!response.ok) {
+              throw new Error(`API error: ${response.status}`);
+            }
+            
+            const hodData = await response.json();
+            console.log('HODs data:', hodData);
+            
+            // Handle different response formats
+            let hodsList = [];
+            if (Array.isArray(hodData)) {
+              hodsList = hodData;
+            } else if (hodData && hodData.users) {
+              hodsList = hodData.users;
+            }
+            
+            setHODs(hodsList);
+            console.log('HODs loaded:', hodsList.length);
+          } catch (error) {
+            console.error('Failed to load HODs:', error);
+          } finally {
+            setLoadingHODs(false);
+          }
         }
       } catch (error) {
         console.error('Failed to load user data:', error);
@@ -132,11 +170,12 @@ const CreateUser = () => {
     try {
       console.log('Creating user with data:', formData);
       
-      // Convert departmentId to number if it exists
+      // Convert departmentId and hodId to number if they exist
       const payload = {
         ...formData,
         departmentId: formData.departmentId ? parseInt(formData.departmentId) : undefined,
-        companyId: parseInt(formData.companyId)
+        companyId: parseInt(formData.companyId),
+        hodId: formData.hodId ? parseInt(formData.hodId) : undefined,
       };
       
       // Direct fetch for better error handling
@@ -340,15 +379,16 @@ const CreateUser = () => {
             </select>
           </div>
           
-          {/* Department dropdown - THIS IS THE MISSING FIELD */}
+          {/* Department dropdown */}
           <div className="form-group">
-            <label htmlFor="departmentId" style={{ display: 'block', marginBottom: '0.5rem' }}>Department</label>
+            <label htmlFor="departmentId" style={{ display: 'block', marginBottom: '0.5rem' }}>Department *</label>
             <select
               id="departmentId"
               name="departmentId"
               value={formData.departmentId}
               onChange={handleChange}
               disabled={loadingDepts}
+              required
               style={{
                 width: '100%',
                 padding: '0.75rem 1rem',
@@ -372,14 +412,68 @@ const CreateUser = () => {
             )}
           </div>
           
+          {/* Location field - New */}
           <div className="form-group">
-            <label htmlFor="designation" style={{ display: 'block', marginBottom: '0.5rem' }}>Designation</label>
+            <label htmlFor="location" style={{ display: 'block', marginBottom: '0.5rem' }}>Location *</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+              placeholder="Enter location (e.g., New York, USA)"
+              style={{
+                width: '100%',
+                padding: '0.75rem 1rem',
+                border: '1px solid #d1d5db',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
+          
+          {/* HOD dropdown - New */}
+          <div className="form-group">
+            <label htmlFor="hodId" style={{ display: 'block', marginBottom: '0.5rem' }}>Head of Department</label>
+            <select
+              id="hodId"
+              name="hodId"
+              value={formData.hodId}
+              onChange={handleChange}
+              disabled={loadingHODs}
+              style={{
+                width: '100%',
+                padding: '0.75rem 1rem',
+                border: '1px solid #d1d5db',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            >
+              <option value="">Select HOD (Optional)</option>
+              {hods.map(hod => (
+                <option key={hod.id} value={hod.id}>
+                  {hod.name}
+                </option>
+              ))}
+            </select>
+            {loadingHODs && (
+              <div style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#6b7280', display: 'flex', alignItems: 'center' }}>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', border: '2px solid #e5e7eb', borderTopColor: '#6366f1', animation: 'spin 1s linear infinite', marginRight: '0.5rem' }}></div>
+                Loading HODs...
+              </div>
+            )}
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="designation" style={{ display: 'block', marginBottom: '0.5rem' }}>Designation *</label>
             <input
               type="text"
               id="designation"
               name="designation"
               value={formData.designation}
               onChange={handleChange}
+              required
               placeholder="Enter job title or designation"
               style={{
                 width: '100%',
@@ -399,7 +493,7 @@ const CreateUser = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="Enter phone number"
+              placeholder="Enter phone number (Optional)"
               style={{
                 width: '100%',
                 padding: '0.75rem 1rem',
@@ -411,13 +505,14 @@ const CreateUser = () => {
           </div>
           
           <div className="form-group">
-            <label htmlFor="employeeId" style={{ display: 'block', marginBottom: '0.5rem' }}>Employee ID</label>
+            <label htmlFor="employeeId" style={{ display: 'block', marginBottom: '0.5rem' }}>Employee ID *</label>
             <input
               type="text"
               id="employeeId"
               name="employeeId"
               value={formData.employeeId}
               onChange={handleChange}
+              required
               placeholder="Enter employee ID"
               style={{
                 width: '100%',
@@ -825,15 +920,16 @@ const CreateUser = () => {
                 </select>
               </div>
               
-              {/* Department dropdown - THIS IS THE MISSING FIELD */}
+              {/* Department dropdown */}
               <div className="form-group">
-                <label htmlFor="departmentId" style={{ display: 'block', marginBottom: '0.5rem' }}>Department</label>
+                <label htmlFor="departmentId" style={{ display: 'block', marginBottom: '0.5rem' }}>Department *</label>
                 <select
                   id="departmentId"
                   name="departmentId"
                   value={formData.departmentId}
                   onChange={handleChange}
                   disabled={loadingDepts}
+                  required
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -857,14 +953,68 @@ const CreateUser = () => {
                 )}
               </div>
               
+              {/* Location field - New */}
               <div className="form-group">
-                <label htmlFor="designation" style={{ display: 'block', marginBottom: '0.5rem' }}>Designation</label>
+                <label htmlFor="location" style={{ display: 'block', marginBottom: '0.5rem' }}>Location *</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter location (e.g., New York, USA)"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    fontSize: '1rem'
+                  }}
+                />
+              </div>
+              
+              {/* HOD dropdown - New */}
+              <div className="form-group">
+                <label htmlFor="hodId" style={{ display: 'block', marginBottom: '0.5rem' }}>Head of Department</label>
+                <select
+                  id="hodId"
+                  name="hodId"
+                  value={formData.hodId}
+                  onChange={handleChange}
+                  disabled={loadingHODs}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    fontSize: '1rem'
+                  }}
+                >
+                  <option value="">Select HOD (Optional)</option>
+                  {hods.map(hod => (
+                    <option key={hod.id} value={hod.id}>
+                      {hod.name}
+                    </option>
+                  ))}
+                </select>
+                {loadingHODs && (
+                  <div style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#6b7280', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', border: '2px solid #e5e7eb', borderTopColor: '#6366f1', animation: 'spin 1s linear infinite', marginRight: '0.5rem' }}></div>
+                    Loading HODs...
+                  </div>
+                )}
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="designation" style={{ display: 'block', marginBottom: '0.5rem' }}>Designation *</label>
                 <input
                   type="text"
                   id="designation"
                   name="designation"
                   value={formData.designation}
                   onChange={handleChange}
+                  required
                   placeholder="Enter job title or designation"
                   style={{
                     width: '100%',
@@ -884,7 +1034,7 @@ const CreateUser = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Enter phone number"
+                  placeholder="Enter phone number (Optional)"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -896,13 +1046,14 @@ const CreateUser = () => {
               </div>
               
               <div className="form-group">
-                <label htmlFor="employeeId" style={{ display: 'block', marginBottom: '0.5rem' }}>Employee ID</label>
+                <label htmlFor="employeeId" style={{ display: 'block', marginBottom: '0.5rem' }}>Employee ID *</label>
                 <input
                   type="text"
                   id="employeeId"
                   name="employeeId"
                   value={formData.employeeId}
                   onChange={handleChange}
+                  required
                   placeholder="Enter employee ID"
                   style={{
                     width: '100%',

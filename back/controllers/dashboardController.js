@@ -10,7 +10,7 @@ exports.getCompanyAdminDashboard = async (req, res, next) => {
     
     // Get company details
     const companyResult = await db.query(
-      'SELECT name, logo_url FROM companies WHERE company_id = $1',
+      'SELECT company_id, name, logo_url, domain, industry, size, created_at, updated_at FROM companies WHERE company_id = $1',
       [companyId]
     );
     
@@ -21,10 +21,7 @@ exports.getCompanyAdminDashboard = async (req, res, next) => {
       });
     }
     
-    const company = {
-      name: companyResult.rows[0].name,
-      logoUrl: companyResult.rows[0].logo_url
-    };
+    const company = companyResult.rows[0];
     
     // Get user statistics by role
     const userStatsQuery = `
@@ -80,7 +77,16 @@ exports.getCompanyAdminDashboard = async (req, res, next) => {
     }));
     
     res.status(200).json({
-      company,
+      company: {
+        id: company.company_id,
+        name: company.name,
+        logoUrl: company.logo_url,
+        domain: company.domain,
+        industry: company.industry,
+        size: company.size,
+        createdAt: company.created_at,
+        updatedAt: company.updated_at
+      },
       stats: {
         users: {
           total: parseInt(userStats.total),

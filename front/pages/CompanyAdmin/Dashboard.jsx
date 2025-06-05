@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, NavLink, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import apiService from '../../src/services/api';
 import authService from '../../src/services/auth.service';
 import '../../styles/dashboard.scss';
@@ -8,16 +8,18 @@ import DepartmentManagement from './DepartmentManagement';
 import UserManagement from './UserManagement';
 import EventMaster from './EventMaster';
 import RACIAssignment from './RACIAssignment';
-import RACITracker from './RACITracker';
+import RACITracker from './RACITracker.jsx';
 import MeetingCalendar from './MeetingCalendar';
 import CompanySettings from './CompanySettings';
 import CreateUser from './CreateUser';
 import EditUser from './EditUser';
 import CreateDepartment from './CreateDepartment';
 import EditDepartment from './EditDepartment';
+import AdminDashboard from './AdminDashboard'; // Make sure this points to the correct file
 import env from '../../src/config/env';
 
 const CompanyAdminDashboard = () => {
+  console.log("CompanyAdminDashboard rendering, pathname:", window.location.pathname);
   const navigate = useNavigate();
   const location = useLocation();
   const [expandedSections, setExpandedSections] = useState({});
@@ -92,11 +94,14 @@ const CompanyAdminDashboard = () => {
     fetchUserAndCompany();
   }, []);
 
+  // Make sure we have a fallback if route redirection fails
   useEffect(() => {
+    console.log("Current location path:", location.pathname);
     if (location.pathname === '/company-admin' || location.pathname === '/company-admin/') {
-      navigate('/company-admin/user-creation', { replace: true });
+      console.log("Redirecting to dashboard");
+      navigate('/company-admin/dashboard', { replace: true });
     }
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
@@ -330,6 +335,10 @@ const CompanyAdminDashboard = () => {
         </div>
         
         <nav>
+          <NavLink to="/company-admin/dashboard" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+            <i className="icon">📊</i> Dashboard
+          </NavLink>
+
           <div 
             className={`nav-item ${location.pathname.includes('/user-') ? 'active' : ''}`}
             onClick={() => toggleSection('users')}
@@ -359,9 +368,7 @@ const CompanyAdminDashboard = () => {
             <NavLink to="/company-admin/department-management" className="nav-item">
               Departments
             </NavLink>
-            <NavLink to="/company-admin/hod-management" className="nav-item">
-              HOD Management
-            </NavLink>
+            {/* Removed HOD Management link */}
           </div>
           
           <div 
@@ -392,9 +399,18 @@ const CompanyAdminDashboard = () => {
             <i className="icon">⚙️</i> Company Settings
           </NavLink>
           
-          <NavLink to="/" className="nav-item">
-            <i className="icon">🏠</i> Back to Home
-          </NavLink>
+          <button className="nav-item" onClick={handleLogout} style={{
+            width: '100%',
+            textAlign: 'left',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '0.75rem 1rem',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <i className="icon">🚪</i> Logout
+          </button>
         </nav>
       </aside>
       
@@ -411,207 +427,31 @@ const CompanyAdminDashboard = () => {
                 <div className="user-role">{currentUser ? currentUser.role : 'Loading...'}</div>
               </div>
             </div>
-            <button className="logout-btn" onClick={handleLogout}>
-              <span>🚪</span> Logout
-            </button>
+            {/* Logout button removed from header as it exists in the sidebar */}
           </div>
         </header>
         
         <div className="content-wrapper">
           <Routes>
-            <Route path="/" element={
-              <>
-                <h1>Dashboard Overview</h1>
-                
-                {/* Analytics Cards */}
-                <div className="dashboard-analytics" style={{ 
-                  marginBottom: '2rem',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}>
-                  {loading.stats ? (
-                    <div className="loading-spinner">Loading analytics data...</div>
-                  ) : dashboardStats ? (
-                    <div className="widget-grid" style={{
-                      display: 'grid', 
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-                      gap: '1.5rem',
-                      width: '100%'
-                    }}>
-                      <div className="widget primary">
-                        <div className="widget-value">{dashboardStats.totalUsers || 0}</div>
-                        <div className="widget-label">Total Users</div>
-                      </div>
-                      <div className="widget secondary">
-                        <div className="widget-value">{dashboardStats.totalDepartments || 0}</div>
-                        <div className="widget-label">Departments</div>
-                      </div>
-                      <div className="widget success">
-                        <div className="widget-value">{dashboardStats.totalEvents || 0}</div>
-                        <div className="widget-label">Events</div>
-                      </div>
-                      <div className="widget warning">
-                        <div className="widget-value">{dashboardStats.pendingApprovals || 0}</div>
-                        <div className="widget-label">Pending Approvals</div>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-                
-                {/* Recent Departments */}
-                <div className="section card" style={{ marginBottom: '2rem', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-                  <div className="section-header" style={{ 
-                    display: 'flex', 
-                    justifyContent: 'space-between', 
-                    marginBottom: '1.5rem', 
-                    alignItems: 'center' 
-                  }}>
-                    <h2 className="section-title" style={{ margin: 0 }}>Departments</h2>
-                    <button 
-                      onClick={() => navigate('/company-admin/departments/create')}
-                      className="btn btn-primary"
-                      style={{ padding: '0.5rem 1rem', backgroundColor: '#4f46e5', color: 'white', border: 'none', borderRadius: '0.375rem' }}
-                    >
-                      + Add Department
-                    </button>
-                  </div>
-                  
-                  {loading.departments ? (
-                    <div className="loading-spinner">Loading departments...</div>
-                  ) : departments.length > 0 ? (
-                    <div className="table-responsive">
-                      <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <thead>
-                          <tr>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Name</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Head of Department</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Employees</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {departments.slice(0, 5).map((dept) => (
-                            <tr key={dept.id}>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>{dept.name}</td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>{dept.hod?.name || 'Not assigned'}</td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>{dept.employeesCount || 0}</td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>
-                                <button 
-                                  onClick={() => navigate(`/company-admin/departments/${dept.id}`)}
-                                  style={{ backgroundColor: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: '0.25rem', padding: '0.25rem 0.5rem', marginRight: '0.5rem' }}
-                                >
-                                  View
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ) : (
-                    <div className="empty-state" style={{ textAlign: 'center', padding: '2rem' }}>
-                      <p>No departments found.</p>
-                      <button 
-                        onClick={() => navigate('/company-admin/departments/create')}
-                        className="btn"
-                        style={{ padding: '0.5rem 1rem', backgroundColor: '#4f46e5', color: 'white', border: 'none', borderRadius: '0.375rem' }}
-                      >
-                        Create Department
-                      </button>
-                    </div>
-                  )}
-                </div>
-                
-                {/* Recent Events */}
-                <div className="section card" style={{ marginBottom: '2rem', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-                  <div className="section-header" style={{ 
-                    display: 'flex', 
-                    justifyContent: 'space-between', 
-                    marginBottom: '1.5rem', 
-                    alignItems: 'center' 
-                  }}>
-                    <h2 className="section-title" style={{ margin: 0 }}>Recent Events</h2>
-                    <button 
-                      onClick={() => navigate('/company-admin/events/create')}
-                      className="btn btn-primary"
-                      style={{ padding: '0.5rem 1rem', backgroundColor: '#4f46e5', color: 'white', border: 'none', borderRadius: '0.375rem' }}
-                    >
-                      + Create Event
-                    </button>
-                  </div>
-                  
-                  {loading.events ? (
-                    <div className="loading-spinner">Loading events...</div>
-                  ) : events.length > 0 ? (
-                    <div className="table-responsive">
-                      <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <thead>
-                          <tr>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Name</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Department</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Status</th>
-                            <th style={{ textAlign: 'left', padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>Created</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {events.slice(0, 5).map((event) => (
-                            <tr key={event.id}>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>{event.name}</td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>{event.department?.name || '-'}</td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>
-                                <span style={{
-                                  display: 'inline-block',
-                                  padding: '0.25rem 0.5rem',
-                                  borderRadius: '9999px',
-                                  fontSize: '0.75rem',
-                                  fontWeight: '500',
-                                  backgroundColor: 
-                                    event.status === 'approved' ? '#dcfce7' : 
-                                    event.status === 'rejected' ? '#fee2e2' : '#fef9c3',
-                                  color: 
-                                    event.status === 'approved' ? '#15803d' : 
-                                    event.status === 'rejected' ? '#b91c1c' : '#854d0e'
-                                }}>
-                                  {event.status?.charAt(0).toUpperCase() + event.status?.slice(1) || 'Pending'}
-                                </span>
-                              </td>
-                              <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb' }}>
-                                {new Date(event.createdAt).toLocaleDateString()}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ) : (
-                    <div className="empty-state" style={{ textAlign: 'center', padding: '2rem' }}>
-                      <p>No events found.</p>
-                      <button 
-                        onClick={() => navigate('/company-admin/events/create')}
-                        className="btn"
-                        style={{ padding: '0.5rem 1rem', backgroundColor: '#4f46e5', color: 'white', border: 'none', borderRadius: '0.375rem' }}
-                      >
-                        Create Event
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </>
-            } />
-
-            <Route path="/user-creation" element={<CreateUser />} />
-            <Route path="/department-management" element={<DepartmentManagement />} />
-            <Route path="/hod-management" element={<DepartmentManagement showHodManagement={true} />} />
-            <Route path="/user-management" element={<UserManagement />} />
-            <Route path="/event-master" element={<EventMaster />} />
-            <Route path="/raci-assignment" element={<RACIAssignment />} />
-            <Route path="/raci-tracker" element={<RACITracker />} />
-            <Route path="/meeting-calendar" element={<MeetingCalendar />} />
-            <Route path="/settings" element={<CompanySettings />} />
+            {/* Changed to have proper path pattern */}
+            <Route path="dashboard/*" element={<AdminDashboard />} />
+            <Route path="user-creation" element={<CreateUser />} />
+            <Route path="department-management" element={<DepartmentManagement />} />
+            <Route path="user-management" element={<UserManagement />} />
+            <Route path="event-master" element={<EventMaster />} />
+            <Route path="raci-assignment" element={<RACIAssignment />} />
+            <Route path="raci-tracker" element={<RACITracker />} />
+            <Route path="meeting-calendar" element={<MeetingCalendar />} />
+            <Route path="settings" element={<CompanySettings />} />
             
-            {/* Add routes for department operations */}
-            <Route path="/departments/create" element={<CreateDepartment />} />
-            <Route path="/departments/edit/:id" element={<EditDepartment />} />
+            {/* Other routes - also changed to relative paths */}
+            <Route path="users/edit/:id" element={<EditUser />} />
+            <Route path="departments/create" element={<CreateDepartment />} />
+            <Route path="departments/edit/:id" element={<EditDepartment />} />
+            
+            {/* Add a default route to handle the root path */}
+            <Route path="/" element={<Navigate to="dashboard" replace />} />
+            <Route path="*" element={<AdminDashboard />} />
           </Routes>
         </div>
       </main>

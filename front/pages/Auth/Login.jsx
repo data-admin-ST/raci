@@ -79,7 +79,7 @@ const Login = () => {
         <div className="auth-header">
           <div className="logo">
             <div className="logo-icon">🔄</div>
-            <h1>RACI SaaS</h1>
+            <h1>Sharp RACI</h1>
           </div>
           <p>Sign in to your account</p>
         </div>

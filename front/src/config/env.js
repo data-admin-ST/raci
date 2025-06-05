@@ -4,6 +4,7 @@
 
 const env = {
   // API Configuration
+  apiHost: import.meta.env.VITE_HOST || window.location.hostname,
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL || `${window.location.origin}/api`,
   apiTimeout: parseInt(import.meta.env.VITE_API_TIMEOUT || '30000'),
   

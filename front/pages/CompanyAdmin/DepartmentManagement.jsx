@@ -14,6 +14,42 @@ const DepartmentManagement = () => {
   const [companyId, setCompanyId] = useState(null);
   const [showHodManagement, setShowHodManagement] = useState(false);
 
+  // Format date function helper
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Not specified';
+    try {
+      return new Date(dateString).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false // Use 24-hour format
+      });
+    } catch (error) {
+      console.error('Date formatting error:', error);
+      return 'Invalid date';
+    }
+  };
+
+  // Function to compare dates and determine if we should show modified date
+  const shouldShowModifiedDate = (createdAt, updatedAt) => {
+    if (!createdAt || !updatedAt) return false;
+    
+    try {
+      // Parse dates and compare them
+      const created = new Date(createdAt).getTime();
+      const updated = new Date(updatedAt).getTime();
+      
+      // If dates are within 1 second of each other, consider them the same
+      return Math.abs(updated - created) > 1000;
+    } catch (error) {
+      console.error('Date comparison error:', error);
+      return false;
+    }
+  };
+
   // Get current user's company ID
   useEffect(() => {
     const fetchUserData = async () => {
@@ -30,7 +66,67 @@ const DepartmentManagement = () => {
     fetchUserData();
   }, []);
 
-  // Load departments
+  // Enhanced refresh function to reload data after operations
+  const refreshData = async () => {
+    if (!companyId) return;
+
+    const fetchDepartments = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Direct fetch to handle errors better
+        const token = localStorage.getItem('raci_auth_token');
+        const response = await fetch(`${env.apiBaseUrl}/companies/${companyId}/departments`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('Departments data:', data);
+        
+        // Handle different response formats and ensure we have timestamp data
+        let deptList = [];
+        if (Array.isArray(data)) {
+          deptList = data;
+        } else if (data && data.departments) {
+          deptList = data.departments;
+        }
+        
+        // Process departments to handle missing data
+        const processedDepartments = deptList.map(dept => ({
+          ...dept,
+          createdAt: dept.createdAt || null,
+          updatedAt: dept.updatedAt || null
+        }));
+        
+        setDepartments(processedDepartments);
+      } catch (error) {
+        console.error('Failed to fetch departments:', error);
+        setError('Failed to load departments. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (companyId) {
+      fetchDepartments();
+    }
+    
+    // Check if we need to refresh data when returning from create/edit
+    if (location.state?.refreshData) {
+      fetchDepartments();
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  };
+
+  // Load departments when company ID is available
   useEffect(() => {
     if (!companyId) return;
 
@@ -55,12 +151,24 @@ const DepartmentManagement = () => {
         const data = await response.json();
         console.log('Departments data:', data);
         
-        // Handle different response formats
-        let departmentsList = Array.isArray(data) ? data : [];
+        // Handle different response formats and ensure we have timestamp data
+        let deptList = [];
+        if (Array.isArray(data)) {
+          deptList = data;
+        } else if (data && data.departments) {
+          deptList = data.departments;
+        }
         
-        setDepartments(departmentsList);
+        // Process departments to handle missing data
+        const processedDepartments = deptList.map(dept => ({
+          ...dept,
+          createdAt: dept.createdAt || null,
+          updatedAt: dept.updatedAt || null
+        }));
+        
+        setDepartments(processedDepartments);
       } catch (error) {
-        console.error('Error fetching departments:', error);
+        console.error('Failed to fetch departments:', error);
         setError('Failed to load departments. Please try again.');
       } finally {
         setLoading(false);
@@ -76,7 +184,7 @@ const DepartmentManagement = () => {
       fetchDepartments();
       navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [companyId, location, navigate]);
+  }, [companyId, location.state?.refreshData, navigate]);
 
   const handleDeleteDepartment = async (deptId, deptName) => {
     if (window.confirm(`Are you sure you want to delete department "${deptName}"? This action cannot be undone.`)) {
@@ -163,6 +271,8 @@ const DepartmentManagement = () => {
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Department Name</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Head of Department</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Employees</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Created At</th>
+                  <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280' }}>Modified At</th>
                   <th style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', fontWeight: '500', color: '#6b7280', textAlign: 'right' }}>Actions</th>
                 </tr>
               </thead>
@@ -176,21 +286,15 @@ const DepartmentManagement = () => {
                     <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
                       {dept.employeesCount || 0}
                     </td>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>{formatDate(dept.createdAt)}</td>
+                    <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+                      {shouldShowModifiedDate(dept.createdAt, dept.updatedAt) 
+                        ? formatDate(dept.updatedAt) 
+                        : "-"}
+                    </td>
                     <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', textAlign: 'right' }}>
                       <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
-                        <button 
-                          onClick={() => navigate(`/company-admin/departments/${dept.id}`)}
-                          style={{
-                            padding: '0.5rem',
-                            background: '#f3f4f6',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
-                          }}
-                          title="View Department"
-                        >
-                          👁️
-                        </button>
+                        {/* View Department button removed */}
                         <button 
                           onClick={() => navigate(`/company-admin/departments/edit/${dept.id}`)}
                           style={{

@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const db = require('../config/db');
+const fs = require('fs');
+const path = require('path');
 
 // @desc    Create a new user
 // @route   POST /api/users
@@ -14,7 +16,8 @@ exports.createUser = async (req, res, next) => {
       phone,
       employeeId,
       departmentId,
-      companyId
+      companyId,
+      location
     } = req.body;
 
     // Validate inputs
@@ -66,13 +69,19 @@ exports.createUser = async (req, res, next) => {
     const tempPassword = Math.random().toString(36).slice(-8);
     const hashedPassword = await bcrypt.hash(tempPassword, 10);
 
+    // Handle photo upload if provided (for company_admin)
+    let photoUrl = null;
+    if (req.file && role === 'company_admin') {
+      photoUrl = `/uploads/${req.file.filename}`;
+    }
+
     // Insert new user
     const result = await db.query(
       `INSERT INTO users (full_name, email, password, role, designation, phone, 
-        employee_id, department_id, company_id)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-      RETURNING user_id, full_name, email, role, designation, phone, employee_id, department_id, company_id`,
-      [name, email, hashedPassword, role, designation, phone, employeeId, departmentId, companyId]
+        employee_id, department_id, company_id, photo, location)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+      RETURNING user_id, full_name, email, role, designation, phone, employee_id, department_id, company_id, photo, location, created_at, updated_at`,
+      [name, email, hashedPassword, role, designation, phone, employeeId, departmentId, companyId, photoUrl, location]
     );
 
     const user = result.rows[0];
@@ -119,10 +128,14 @@ exports.createUser = async (req, res, next) => {
       designation: user.designation,
       phone: user.phone,
       employeeId: user.employee_id,
+      photo: user.photo,
+      location: user.location,
       department,
       company,
       status: 'pending',
-      tempPassword: tempPassword // Include the temporary password in the response
+      tempPassword: tempPassword,
+      createdAt: user.created_at,
+      updatedAt: user.updated_at
     });
   } catch (error) {
     logger.error(`Error creating user: ${error.message}`);
@@ -146,7 +159,7 @@ exports.getUsers = async (req, res, next) => {
 
     // Build query based on filters
     let query = `SELECT u.user_id, u.full_name, u.email, u.role, u.designation, 
-                u.department_id, d.name as department_name, u.created_at
+                u.department_id, d.name as department_name, u.created_at, u.updated_at, u.location
                 FROM users u
                 LEFT JOIN departments d ON u.department_id = d.department_id
                 WHERE 1=1`;
@@ -212,7 +225,10 @@ exports.getUsers = async (req, res, next) => {
         id: user.department_id,
         name: user.department_name
       } : null,
-      status: 'active' // Can be modified if status is added to users table
+      status: 'active',
+      location: user.location,
+      createdAt: user.created_at,
+      updatedAt: user.updated_at
     }));
 
     res.status(200).json({
@@ -237,7 +253,8 @@ exports.getUserById = async (req, res, next) => {
 
     const { rows } = await db.query(
       `SELECT u.user_id, u.full_name, u.email, u.phone, u.role, 
-      u.designation, u.employee_id, u.company_id, u.department_id,
+      u.designation, u.employee_id, u.company_id, u.department_id, u.photo, u.location,
+      u.created_at, u.updated_at,
       c.name as company_name, d.name as department_name
       FROM users u
       LEFT JOIN companies c ON u.company_id = c.company_id
@@ -263,6 +280,8 @@ exports.getUserById = async (req, res, next) => {
       designation: user.designation,
       phone: user.phone,
       employeeId: user.employee_id,
+      photo: user.photo,
+      location: user.location,
       department: user.department_id ? {
         id: user.department_id,
         name: user.department_name
@@ -271,7 +290,9 @@ exports.getUserById = async (req, res, next) => {
         id: user.company_id,
         name: user.company_name
       } : null,
-      status: 'active' // Can be modified if status is added to users table
+      status: 'active',
+      createdAt: user.created_at,
+      updatedAt: user.updated_at
     });
   } catch (error) {
     next(error);
@@ -284,7 +305,7 @@ exports.getUserById = async (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
   try {
     const userId = req.params.id;
-    const { name, designation, phone, departmentId } = req.body;
+    const { name, designation, phone, departmentId, location } = req.body;
 
     // Check if user exists
     const userCheck = await db.query('SELECT * FROM users WHERE user_id = $1', [userId]);
@@ -308,6 +329,19 @@ exports.updateUser = async (req, res, next) => {
       });
     }
 
+    // Handle photo upload if provided (for company_admin)
+    let photoUrl = userCheck.rows[0].photo;
+    if (req.file && userCheck.rows[0].role === 'company_admin') {
+      // If user already has a photo, remove the old one
+      if (photoUrl) {
+        const oldPhotoPath = path.join(__dirname, '..', photoUrl);
+        if (fs.existsSync(oldPhotoPath)) {
+          fs.unlinkSync(oldPhotoPath);
+        }
+      }
+      photoUrl = `/uploads/${req.file.filename}`;
+    }
+
     // Update user
     const result = await db.query(
       `UPDATE users
@@ -315,10 +349,12 @@ exports.updateUser = async (req, res, next) => {
            designation = COALESCE($2, designation),
            phone = COALESCE($3, phone),
            department_id = COALESCE($4, department_id),
+           photo = COALESCE($5, photo),
+           location = COALESCE($6, location),
            updated_at = CURRENT_TIMESTAMP
-       WHERE user_id = $5
-       RETURNING user_id, full_name, email, role, designation, phone, employee_id, department_id, company_id`,
-      [name, designation, phone, departmentId, userId]
+       WHERE user_id = $7
+       RETURNING user_id, full_name, email, role, designation, phone, employee_id, department_id, company_id, photo, location, created_at, updated_at`,
+      [name, designation, phone, departmentId, photoUrl, location, userId]
     );
 
     const user = result.rows[0];
@@ -362,9 +398,13 @@ exports.updateUser = async (req, res, next) => {
       designation: user.designation,
       phone: user.phone,
       employeeId: user.employee_id,
+      photo: user.photo,
+      location: user.location,
       department,
       company,
-      status: 'active' // Can be modified if status is added to users table
+      status: 'active',
+      createdAt: user.created_at,
+      updatedAt: user.updated_at
     });
   } catch (error) {
     next(error);

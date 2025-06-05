@@ -5753,3 +5753,780 @@ Please make sure your database server is running at `localhost:5432`.
 2025-06-04 15:46:52 [ERROR]: Response Error: {"success":false,"message":"User not found"}
 2025-06-04 20:58:53 [ERROR]: Response Error: {"success":false,"message":"User not found"}
 2025-06-04 20:58:53 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:48:25 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:48:25 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:49:59 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:49:59 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:50:30 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:50:30 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:50:48 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:50:48 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:18 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:18 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:24 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:24 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:27 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 21:57:27 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 22:24:27 [ERROR]: Failed to start server: Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+2025-06-04 22:42:10 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-04 22:42:10 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 12:42:53 [ERROR]: Token verification error: invalid signature
+2025-06-05 12:42:53 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 12:44:59 [ERROR]: Unhandled Promise Rejection: logger is not defined
+2025-06-05 14:03:12 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:12 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:16 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:16 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:21 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:21 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:39 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:03:45 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:03:46 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:03:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:03:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:03:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:03:56 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:03:56 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:03:56 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:04:00 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:04:01 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:04:20 [ERROR]: Uncaught Exception: read ECONNRESET
+2025-06-05 14:04:38 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:04:39 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:04:39 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:04:39 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:08:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:08:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:08:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:08:55 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:08:55 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:08:55 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:08:56 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:08:57 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:12:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:15 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:12:16 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:12:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:18 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:18 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:18 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:21 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:21 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:21 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:24 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:24 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:24 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:24 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:24 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:24 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:12:27 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:12:27 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:12:27 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:16:35 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:16:40 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:16:40 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:18:57 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:18:57 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:27:00 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:27:00 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:27:00 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:27:02 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:27:02 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:27:02 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:27:03 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 14:27:03 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:238:22)
+2025-06-05 14:27:03 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 14:27:03 [ERROR]: Response Error: {"success":false,"message":"User role website_admin is not authorized to access this route"}
+2025-06-05 14:29:56 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 14:29:58 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:12:31 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 15:12:32 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 15:12:50 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:12:52 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:12:57 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:12:57 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:20:45 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 15:20:45 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 15:21:44 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:21:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:21:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:21:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:22:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:22:28 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:22:31 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:22:37 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:22:37 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:22:47 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:22:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:22:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:22:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:22:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 15:23:39 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 15:29:37 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 15:29:38 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 16:56:15 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 16:56:17 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 16:56:17 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:03:12 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:03:13 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:37:17 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:37:18 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:38:37 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:38:38 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:49:26 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 17:49:51 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 17:55:32 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:55:34 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:55:45 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 17:56:15 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 17:56:21 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:56:22 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 17:56:46 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 18:00:04 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 18:01:47 [ERROR]: PrismaClientKnownRequestError: 
+Invalid `prisma.websiteAdmin.findUnique()` invocation in
+C:\Users\om\Desktop\5\RACI\backend\controllers\websiteAdminController.js:271:45
+
+  268 }
+  269 
+  270 // Check if admin exists
+→ 271 const admin = await prisma.websiteAdmin.findUnique(
+Can't reach database server at `dbprovider.us-east-1.clawcloudrun.com:37667`
+
+Please make sure your database server is running at `dbprovider.us-east-1.clawcloudrun.com:37667`.
+2025-06-05 18:01:47 [ERROR]: PrismaClientKnownRequestError: 
+Invalid `prisma.websiteAdmin.findUnique()` invocation in
+C:\Users\om\Desktop\5\RACI\backend\controllers\websiteAdminController.js:271:45
+
+  268 }
+  269 
+  270 // Check if admin exists
+→ 271 const admin = await prisma.websiteAdmin.findUnique(
+Can't reach database server at `dbprovider.us-east-1.clawcloudrun.com:37667`
+
+Please make sure your database server is running at `dbprovider.us-east-1.clawcloudrun.com:37667`.
+    at $n.handleRequestError (C:\Users\om\Desktop\5\RACI\backend\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (C:\Users\om\Desktop\5\RACI\backend\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\om\Desktop\5\RACI\backend\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\om\Desktop\5\RACI\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async exports.login (C:\Users\om\Desktop\5\RACI\backend\controllers\websiteAdminController.js:271:19)
+2025-06-05 18:01:47 [ERROR]: Response Error: {"success":false,"message":"\nInvalid `prisma.websiteAdmin.findUnique()` invocation in\nC:\\Users\\om\\Desktop\\5\\RACI\\backend\\controllers\\websiteAdminController.js:271:45\n\n  268 }\n  269 \n  270 // Check if admin exists\n→ 271 const admin = await prisma.websiteAdmin.findUnique(\nCan't reach database server at `dbprovider.us-east-1.clawcloudrun.com:37667`\n\nPlease make sure your database server is running at `dbprovider.us-east-1.clawcloudrun.com:37667`."}
+2025-06-05 18:01:52 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:01 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:01 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:18 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 18:02:19 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 18:02:37 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:38 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:47 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:02:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:02:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:02:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:03:01 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:03:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:03:06 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:03:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:03:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:05:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:05:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:05:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:05:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:13:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:13:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:13:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:13:26 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:22:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:22:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:27:30 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:27:32 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:27:37 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:27:38 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:27:51 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 18:27:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:27:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:27:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:27:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:30:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:48:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 18:48:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:00:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:00:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:50:19 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 19:50:20 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 19:53:51 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 19:53:53 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 19:53:59 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 19:54:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:38 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:39 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:50 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:54:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:55:45 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 19:57:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:57:29 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:57:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:57:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:57:56 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 19:58:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:18 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 19:58:57 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 19:59:16 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 19:59:29 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 20:07:20 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 20:13:55 [ERROR]: Response Error: {"success":false,"message":"Name, email and role are required"}
+2025-06-05 20:14:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:19:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:19:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:21:19 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 20:21:21 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 20:21:26 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 20:21:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:21:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:21:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:21:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:28:36 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 20:28:37 [ERROR]: Response Error: {"success":false,"message":"User not found"}
+2025-06-05 20:29:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:29:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:57:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 20:57:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:01:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:01:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:01:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:01:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:11:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:11:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:11:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:11:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:17:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:18:50 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:18:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 21:30:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 21:30:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 21:30:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 21:30:54 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 21:30:54 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 21:30:54 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:03:30 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:03:30 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:03:30 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:03:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:03:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:03:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:12:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:12:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:12:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:12:54 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:12:54 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:12:54 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:13 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:13 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:13 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:21 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:21 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:21 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:24 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:24 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:24 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:27 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:27 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:27 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:13:28 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 22:13:28 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 22:13:28 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 22:16:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:16:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:16:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:16:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:16:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:16:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:23:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:23:12 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:27:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:27:49 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:32:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:32:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:38 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:46:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:53:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:53:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:53:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:53:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:58:38 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:58:39 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:58:47 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:58:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:18 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:18 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 22:59:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:00:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:00:06 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:00:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:00:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:07:58 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 23:07:58 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 23:07:58 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 23:08:01 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 23:08:01 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 23:08:01 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 23:08:29 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:08:29 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:08:38 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:08:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:08:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:09:08 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 23:09:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:09:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:35:07 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:35:08 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:37:17 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:17 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:17 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:17 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:17 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:17 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:18 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:18 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:18 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:18 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:20 [ERROR]: Token verification error: jwt malformed
+2025-06-05 23:37:20 [ERROR]: Response Error: {"success":false,"message":"Invalid or expired token"}
+2025-06-05 23:37:26 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 23:37:26 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 23:37:31 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-05 23:37:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:37:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:37:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:37:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:37:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 23:37:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 23:37:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 23:37:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-05 23:37:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-05 23:37:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-05 23:44:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:44:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:45:07 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:45:08 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:49:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:49:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:52:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-05 23:52:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:01:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:01:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:05:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:05:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:06:18 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-06 00:06:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:06:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:10:36 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:10:36 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:10:36 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:10:38 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:10:38 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:10:38 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:10:47 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:10:47 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:10:47 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:10:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:10:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:10:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:21 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:21 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:21 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:22:24 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:24 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:24 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:22:25 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:25 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:25 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:31 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:31 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:31 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:32 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:22:32 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:22:32 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:22:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:22:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:31:41 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:31:41 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:31:41 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:31:44 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:31:44 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:31:44 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:32:29 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:32:29 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:32:29 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:32:32 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:32:32 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:32:32 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:32:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:32:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:36:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:36:54 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:36:54 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:36:54 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:36:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:36:55 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:36:55 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:36:55 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:39:25 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:39:25 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:39:25 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:39:28 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:39:28 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:39:28 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:39:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:39:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:45:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:45:03 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:45:03 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:45:03 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:45:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:45:04 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:45:04 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:45:04 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:45:05 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:45:05 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:45:05 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:45:08 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:45:08 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:45:08 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:46:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:46:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:46:05 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:46:05 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:46:05 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:46:07 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:46:07 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:46:07 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:48:54 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:48:54 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:48:54 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:48:57 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 00:48:57 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 00:48:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 00:48:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:48:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:54:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:54:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:57:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 00:57:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:07:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:07:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:09:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:09:49 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:09:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:10:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:12:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:12:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:14:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:14:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:15:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:15:49 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:15:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:16:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:16:01 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 01:16:01 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 01:16:01 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 01:16:02 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 01:16:02 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 01:16:02 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 01:17:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:17:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:19:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:19:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:21:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:21:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:21:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:21:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:21:56 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 01:21:56 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 01:21:56 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 01:21:57 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 01:21:57 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 01:21:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 01:22:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 01:22:06 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}

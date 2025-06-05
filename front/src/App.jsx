@@ -11,11 +11,11 @@ import CreatePassword from '../pages/Auth/CreatePassword';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
 import ChangePassword from '../pages/Auth/ChangePassword';
 import CreateDepartment from '../pages/CompanyAdmin/CreateDepartment';
-// Add missing imports
 import UserManagement from '../pages/CompanyAdmin/UserManagement';
 import CreateUser from '../pages/CompanyAdmin/CreateUser';
 import EditUser from '../pages/CompanyAdmin/EditUser';
 import DepartmentManagement from '../pages/CompanyAdmin/DepartmentManagement';
+import RACITracker from '../pages/CompanyAdmin/RACITracker';
 import './App.css';
 import '../styles/global.scss';
 
@@ -56,6 +56,7 @@ function App() {
         <Route path="/company-admin/users/edit/:id" element={<PrivateRoute element={<EditUser />} />} />
         <Route path="/company-admin/departments" element={<PrivateRoute element={<DepartmentManagement />} />} />
         <Route path="/company-admin/departments/create" element={<PrivateRoute element={<CreateDepartment />} />} />
+        <Route path="/raci-tracker" element={<PrivateRoute><RACITracker /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );
