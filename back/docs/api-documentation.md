@@ -1130,12 +1130,18 @@ Error response example:
 
 - **URL**: `/api/raci-tracker/company`
 - **Method**: `GET`
-- **Auth required**: Yes (company_admin)
-- **Description**: Get all RACI assignments for the company of the authenticated company admin, including all users, their roles, financial limits, task, event, and department details.
+- **Auth required**: Yes (company_admin only)
+- **Query Parameters**:
+  - `page`: Page number (default: 1)
+  - `pageSize`: Number of items per page (default: 10)
+- **Description**: Get all RACI assignments for the company of the authenticated company admin. This is the unified endpoint for accessing all RACI data.
 - **Success Response**:
   ```json
   {
     "success": true,
+    "totalItems": 25,
+    "totalPages": 3,
+    "currentPage": 1,
     "data": [
       {
         "id": 1,
@@ -1155,6 +1161,7 @@ Error response example:
         "event": {
           "id": 5,
           "name": "Annual Planning",
+          "status": "approved",
           "startDate": "2024-06-01T00:00:00.000Z",
           "endDate": "2024-06-10T00:00:00.000Z"
         },
@@ -1167,7 +1174,19 @@ Error response example:
     ]
   }
   ```
-- **Note**: This endpoint is accessible to company_admins and returns all RACI assignments for all users in their company, including user info, roles, financial limits, and related task/event/department details.
+- **Note**: This endpoint is accessible only to company_admin users and returns all RACI assignments for all users in their company.
+
+- **Empty Response**:
+  ```json
+  {
+    "success": true,
+    "message": "No RACI assignments found for this company",
+    "totalItems": 0,
+    "totalPages": 0,
+    "currentPage": 1,
+    "data": []
+  }
+  ```
 
 ## RACI Tracker
 
@@ -1208,11 +1227,20 @@ Error response example:
           "name": "Finance"
         }
       }
-      // ...more assignments
     ]
   }
   ```
-- **Note**: This endpoint is accessible to all authenticated users, including company admins, and returns all RACI assignments for the logged-in user, with pagination support.
+- **IMPORTANT NOTE**: The correct endpoint is `/api/raci-tracker/my-assignments`. The previous endpoint `/api/raci/tracker` is deprecated but will redirect to the correct endpoint for backward compatibility.
+- **Empty Response**: If no assignments are found, the endpoint returns an empty data array:
+  ```json
+  {
+    "success": true,
+    "totalItems": 0,
+    "totalPages": 0,
+    "currentPage": 1,
+    "data": []
+  }
+  ```
 
 ## HOD Department Management
 

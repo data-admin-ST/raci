@@ -1,1066 +1,1270 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import env from '../../src/config/env';
 
 const RACITracker = () => {
-  const [assignments, setAssignments] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filterRole, setFilterRole] = useState('');
-  const [filterEvent, setFilterEvent] = useState('');
-  const [filterDepartment, setFilterDepartment] = useState('');
-  const [filterStatus, setFilterStatus] = useState('');
-  const [eventOptions, setEventOptions] = useState([]);
-  const [departmentOptions, setDepartmentOptions] = useState([]);
-  const [statusOptions, setStatusOptions] = useState([]);
-  const [selectedAssignment, setSelectedAssignment] = useState(null);
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const pageSize = 10;
-
-  useEffect(() => {
-    const fetchAssignments = async () => {
+  const navigate = useNavigate();
+  const [selectedEvent, setSelectedEvent] = useState('');
+  const [showApprovalModal, setShowApprovalModal] = useState(false);
+  const [approvalEmail, setApprovalEmail] = useState('');
+  const [companyData, setCompanyData] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
+  const [allEventsRaciData, setAllEventsRaciData] = useState([]);
+  const [loadingAllEventsRaci, setLoadingAllEventsRaci] = useState(true);
+  const [employees, setEmployees] = useState([]);
+  const [eventEmployees, setEventEmployees] = useState([]);
+  const [loadingEmployees, setLoadingEmployees] = useState(false);
+  const [isLoadingRaciData, setIsLoadingRaciData] = useState(false);
+  const [existingDataFound, setExistingDataFound] = useState(false);
+  const [dropdownRefreshKey, setDropdownRefreshKey] = useState(0);
+  const [tasks, setTasks] = useState([]);
+  const [eventTasks, setEventTasks] = useState([]);
+  const [raci, setRaci] = useState({
+    tasks: [],
+    users: []
+  });
+  const [financialLimits, setFinancialLimits] = useState({});
+  const [financialLimitValues, setFinancialLimitValues] = useState({});
+  const [selectedEmployees, setSelectedEmployees] = useState({
+    responsible: {},
+    accountable: {},
+    consulted: {},
+    informed: {}
+  });
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [editingTaskName, setEditingTaskName] = useState('');
+  
+  // Add state for sidebar
+  const [expandedSections, setExpandedSections] = useState({
+    users: false,
+    departments: false,
+    raci: true // Auto-expand RACI section since we're on RACI Tracker
+  });
+  
+  // Toggle sidebar sections
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+  
+  const handleLogout = () => {
+    if (window.confirm('Are you sure you want to log out?')) {
+      localStorage.removeItem('raci_auth_token');
+      navigate('/auth/login');
+    }
+  };
+  
+  // Function to fetch RACI data for events
+  const fetchAllEventsRaciData = async (events) => {
+    if (!events || events.length === 0) {
+      setAllEventsRaciData([]);
+      setLoadingAllEventsRaci(false);
+      return;
+    }
+    
+    setLoadingAllEventsRaci(true);
+    
+    // Map through events and fetch RACI data for each
+    const raciDataPromises = events.map(async (event) => {
       try {
-        setLoading(true);
-        setError(null);
         const token = localStorage.getItem('raci_auth_token');
-        
-        // Updated according to API documentation
-        const response = await fetch(`${env.apiBaseUrl}/raci-tracker/my-assignments`, {
+        const response = await fetch(`${env.apiBaseUrl}/events/${event.id}/raci-matrix`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
           }
         });
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch assignments: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log('My RACI assignments data:', result);
         
-        // Process response based on API documentation structure
-        if (result.success && result.data) {
-          // API returns data array directly
-          const assignmentsData = Array.isArray(result.data) ? result.data : [];
-          setAssignments(assignmentsData);
-          
-          // Extract unique event and department names for filters
-          const events = new Set();
-          const departments = new Set();
-          const statuses = new Set();
-          
-          assignmentsData.forEach(assignment => {
-            if (assignment.event && assignment.event.name) {
-              events.add(assignment.event.name);
-            }
-            if (assignment.department && assignment.department.name) {
-              departments.add(assignment.department.name);
-            }
-            if (assignment.status) {
-              statuses.add(assignment.status);
-            } else if (assignment.task?.status) {
-              statuses.add(assignment.task.status);
-            }
-          });
-          
-          setEventOptions(Array.from(events));
-          setDepartmentOptions(Array.from(departments));
-          setStatusOptions(Array.from(statuses));
-        } else {
-          setAssignments([]);
+        if (!response.ok) {
+          if (response.status === 404) {
+            return {
+              event,
+              raciData: null,
+              hasData: false
+            };
+          }
+          throw new Error(`API error: ${response.status}`);
         }
-      } catch (err) {
-        console.error('Error fetching RACI assignments:', err);
-        setError(err.message || 'Failed to load your RACI assignments');
-        setAssignments([]);
+        
+        const raciData = await response.json();
+        return {
+          event,
+          raciData,
+          hasData: true
+        };
+      } catch (error) {
+        console.error(`Error fetching RACI data for event ${event.id}:`, error);
+        return {
+          event,
+          raciData: null,
+          hasData: false,
+          error: error.message
+        };
+      }
+    });
+    
+    const results = await Promise.all(raciDataPromises);
+    setAllEventsRaciData(results);
+    setLoadingAllEventsRaci(false);
+  };
+  
+  // Enhanced function to process employee data consistently
+  const formatEmployeeData = (employee) => {
+    return {
+      id: String(employee.id || '0'),
+      name: employee.name || employee.fullName || 'Unknown User',
+      role: employee.designation || employee.role || employee.title || '',
+      email: employee.email || '',
+      department: employee.department?.name || employee.departmentName || ''
+    };
+  };
+
+  // Company logo rendering
+  const renderCompanyLogo = () => {
+    if (!companyData) return null;
+    
+    if (companyData.logoUrl) {
+      const logoUrl = companyData.logoUrl.startsWith('http') 
+        ? companyData.logoUrl 
+        : `${window.location.protocol}//${window.location.hostname}:5000${companyData.logoUrl}`;
+      
+      return (
+        <div style={{ 
+          width: '40px', 
+          height: '40px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          marginRight: '10px',
+          flexShrink: 0,
+          border: '1px solid #f3f4f6',
+          borderRadius: '4px',
+          overflow: 'hidden',
+          background: '#fff'
+        }}>
+          <img 
+            src={logoUrl}
+            alt={companyData?.name || 'Company'} 
+            className="company-logo"
+            style={{ 
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: 'contain'
+            }}
+            onError={(e) => {
+              // Replace with first letter of company name inside a colored circle
+              const parent = e.target.parentNode;
+              parent.innerHTML = `<div style="width: 40px; height: 40px; border-radius: 50%; background-color: #4f46e5; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px;">${companyData?.name ? companyData.name.charAt(0).toUpperCase() : 'C'}</div>`;
+            }}
+          />
+        </div>
+      );
+    }
+    
+    // Fallback to letter display
+    return (
+      <div style={{ 
+        width: '40px', 
+        height: '40px', 
+        borderRadius: '50%', 
+        backgroundColor: '#4f46e5', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        fontWeight: 'bold', 
+        fontSize: '18px',
+        marginRight: '10px',
+        flexShrink: 0
+      }}>
+        {companyData?.name ? companyData.name.charAt(0).toUpperCase() : 'C'}
+      </div>
+    );
+  };
+
+  // Function to view event details
+  const viewEventDetails = (eventId) => {
+    navigate(`/company-admin/event/${eventId}`);
+  };
+  
+  // Update handleEventChange to also load existing RACI matrix when an event is selected
+  const handleEventChange = async (e) => {
+    const eventId = e.target.value;
+    setSelectedEvent(eventId);
+    
+    // Clear existing selections when changing events
+    if (eventId !== selectedEvent) {
+      setSelectedEmployees({
+        responsible: {},
+        accountable: {},
+        consulted: {},
+        informed: {}
+      });
+      setFinancialLimits({});
+      setFinancialLimitValues({});
+    }
+    
+    if (!eventId) {
+      setEventEmployees([]);
+      setEventTasks([]);
+      return;
+    }
+    
+    try {
+      setLoadingEmployees(true);
+      
+      const token = localStorage.getItem('raci_auth_token');
+      
+      // Fetch full event data which contains employees and tasks
+      const response = await fetch(`${env.apiBaseUrl}/events/${eventId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch event details: ${response.status}`);
+      }
+      
+      const eventData = await response.json();
+      
+      // Process employees
+      if (eventData.employees && Array.isArray(eventData.employees)) {
+        const formattedEmployees = eventData.employees.map(formatEmployeeData);
+        setEventEmployees(formattedEmployees);
+        
+        setTimeout(() => {
+          setLoadingEmployees(false);
+          setDropdownRefreshKey(prev => prev + 1);
+        }, 100);
+      } else if (eventData.department?.id) {
+        await fetchDepartmentEmployees(eventData.department.id);
+      } else {
+        setEventEmployees([]);
+        setLoadingEmployees(false);
+      }
+      
+      // Process tasks
+      if (eventData.tasks && Array.isArray(eventData.tasks)) {
+        console.log('Event tasks data:', eventData.tasks);
+        
+        // Update tasks from event data
+        const formattedTasks = eventData.tasks.map(task => ({
+          id: task.id,
+          name: task.name || 'Unnamed Task',
+          description: task.description || '',
+          status: task.status || 'not_started',
+          responsible: [],
+          accountable: [],
+          consulted: [],
+          informed: []
+        }));
+        
+        setEventTasks(formattedTasks);
+        setTasks(formattedTasks);
+        
+        // Also update RACI state to maintain consistency
+        setRaci(prev => ({
+          ...prev,
+          tasks: formattedTasks.map(task => ({
+            id: String(task.id),
+            name: task.name,
+            assignments: []
+          }))
+        }));
+      } else {
+        // If no tasks are found, we can keep some default empty tasks
+        const defaultTasks = [
+          { id: 1, name: '', responsible: [], accountable: [], consulted: [], informed: [] },
+          { id: 2, name: '', responsible: [], accountable: [], consulted: [], informed: [] },
+          { id: 3, name: '', responsible: [], accountable: [], consulted: [], informed: [] },
+        ];
+        setEventTasks([]);
+        setTasks(defaultTasks);
+      }
+      
+      // Load existing RACI matrix for this event
+      await loadExistingRaciMatrix(eventId);
+      
+    } catch (error) {
+      console.error('Error fetching event data:', error);
+      setEventEmployees([]);
+      setEventTasks([]);
+      setLoadingEmployees(false);
+    }
+  };
+
+  // Helper function to fetch department employees
+  const fetchDepartmentEmployees = async (departmentId) => {
+    if (!departmentId) return;
+    
+    try {
+      const token = localStorage.getItem('raci_auth_token');
+      const deptResponse = await fetch(`${env.apiBaseUrl}/departments/${departmentId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (deptResponse.ok) {
+        const deptData = await deptResponse.json();
+        console.log('Department data:', deptData);
+        
+        if (deptData && deptData.employees && Array.isArray(deptData.employees)) {
+          const formattedDeptEmployees = deptData.employees.map(user => ({
+            id: String(user.id), // Ensure ID is string
+            name: user.name || 'Unknown',
+            role: user.designation || user.role || 'Employee',
+            email: user.email,
+            department: deptData.name
+          }));
+          
+          setEventEmployees(formattedDeptEmployees);
+          console.log('Department-specific employees loaded:', formattedDeptEmployees.length);
+        } else {
+          // No employees in department, clear event employees
+          setEventEmployees([]);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching department employees:', error);
+      setEventEmployees([]);
+    }
+  };
+
+  // Load existing RACI matrix function placeholder
+  const loadExistingRaciMatrix = async (eventId) => {
+    setIsLoadingRaciData(true);
+    // Implementation details would go here
+    setExistingDataFound(false);
+    setIsLoadingRaciData(false);
+  };
+
+  // Use effect to load events when component mounts
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const token = localStorage.getItem('raci_auth_token');
+        const response = await fetch(`${env.apiBaseUrl}/events`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        
+        const eventsData = await response.json();
+        const eventsList = Array.isArray(eventsData) ? eventsData : 
+                          (eventsData.events || eventsData.data || []);
+        
+        setEvents(eventsList);
+        
+        // After loading events, fetch RACI data for all
+        if (eventsList.length > 0) {
+          fetchAllEventsRaciData(eventsList);
+        } else {
+          setLoadingAllEventsRaci(false);
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        setLoadingEvents(false);
+        setLoadingAllEventsRaci(false);
       } finally {
-        setLoading(false);
+        setLoadingEvents(false);
       }
     };
+    
+    fetchEvents();
+  }, []);
 
-    fetchAssignments();
-  }, [page]);
-
-  // Function to get role badge style
-  const getRoleBadgeStyle = (role) => {
-    switch (role) {
-      case 'R':
-        return { 
-          backgroundColor: '#eff6ff', 
-          color: '#2563eb', 
-          border: '1px solid #2563eb' 
-        };
-      case 'A':
-        return { 
-          backgroundColor: '#f0fdfa', 
-          color: '#059669', 
-          border: '1px solid #059669' 
-        };
-      case 'C':
-        return { 
-          backgroundColor: '#fef3c7', 
-          color: '#d97706', 
-          border: '1px solid #d97706' 
-        };
-      case 'I':
-        return { 
-          backgroundColor: '#f5f3ff', 
-          color: '#7c3aed', 
-          border: '1px solid #7c3aed' 
-        };
-      default:
-        return { 
-          backgroundColor: '#f3f4f6', 
-          color: '#6b7280', 
-          border: '1px solid #6b7280' 
-        };
+  // Debugging effect for selections
+  useEffect(() => {
+    if (existingDataFound) {
+      console.log('Current selected employees:', selectedEmployees);
     }
+  }, [selectedEmployees, existingDataFound]);
+
+  // Helper function to check if an employee is already assigned
+  const isEmployeeAssignedElsewhere = (taskId, currentRole, employeeId) => {
+    if (!employeeId) return false;
+    
+    // Check if this employee is assigned to any other role for this task
+    const roles = ['responsible', 'accountable', 'consulted', 'informed'];
+    
+    // Look through all roles except the current one
+    return roles
+      .filter(role => role !== currentRole)
+      .some(role => selectedEmployees[role][taskId] === employeeId);
   };
 
-  // Function to get status badge style
-  const getStatusBadgeStyle = (status) => {
-    if (!status) return null;
+  // Handle employee selection
+  const handleEmployeeSelect = (taskId, role, userId) => {
+    // Create a copy of the current selections
+    const updatedSelections = { ...selectedEmployees };
     
-    const normalizedStatus = status.toLowerCase();
-    
-    if (normalizedStatus.includes('complete') || normalizedStatus.includes('done') || normalizedStatus === 'completed') {
-      return { 
-        backgroundColor: '#dcfce7', 
-        color: '#14532d', 
-        border: '1px solid #15803d' 
-      };
-    } else if (normalizedStatus.includes('progress') || normalizedStatus === 'in_progress' || normalizedStatus === 'in progress') {
-      return { 
-        backgroundColor: '#eff6ff', 
-        color: '#1e40af', 
-        border: '1px solid #3b82f6' 
-      };
-    } else if (normalizedStatus.includes('pending') || normalizedStatus === 'not_started' || normalizedStatus === 'not started') {
-      return { 
-        backgroundColor: '#fef9c3', 
-        color: '#854d0e', 
-        border: '1px solid #eab308' 
-      };
-    } else if (normalizedStatus.includes('review') || normalizedStatus === 'under_review' || normalizedStatus === 'under review') {
-      return { 
-        backgroundColor: '#fae8ff', 
-        color: '#86198f', 
-        border: '1px solid #d946ef' 
-      };
-    } else if (normalizedStatus.includes('cancel') || normalizedStatus === 'cancelled' || normalizedStatus === 'canceled') {
-      return { 
-        backgroundColor: '#fee2e2', 
-        color: '#991b1b', 
-        border: '1px solid #ef4444' 
-      };
-    } else {
-      return { 
-        backgroundColor: '#f3f4f6', 
-        color: '#6b7280', 
-        border: '1px solid #9ca3af' 
-      };
+    // If the user selected an employee (not clearing the selection)
+    if (userId) {
+      // Remove this employee from any other role for this task
+      const roles = ['responsible', 'accountable', 'consulted', 'informed'];
+      roles.forEach(otherRole => {
+        if (otherRole !== role && updatedSelections[otherRole][taskId] === userId) {
+          delete updatedSelections[otherRole][taskId];
+        }
+      });
     }
-  };
-
-  // Function to format status display name
-  const formatStatusName = (status) => {
-    if (!status) return 'Not Set';
     
-    // Convert snake_case or camelCase to Title Case
-    return status
-      .replace(/_/g, ' ')
-      .replace(/([A-Z])/g, ' $1')
-      .replace(/^\w/, c => c.toUpperCase())
-      .trim();
-  };
-
-  // Function to get full role name
-  const getRoleName = (role) => {
-    switch (role) {
-      case 'R': return 'Responsible';
-      case 'A': return 'Accountable';
-      case 'C': return 'Consulted';
-      case 'I': return 'Informed';
-      default: return 'Unknown';
-    }
-  };
-
-  // Format currency for financial limits
-  const formatCurrency = (amount) => {
-    if (amount === undefined || amount === null) return '₹0';
+    // Update the selection for the current role
+    updatedSelections[role] = {
+      ...updatedSelections[role],
+      [taskId]: userId
+    };
     
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0
-    }).format(amount);
+    setSelectedEmployees(updatedSelections);
   };
 
-  // Function to view assignment details
-  const viewAssignmentDetails = (assignment) => {
-    setSelectedAssignment(assignment);
-    setShowDetailsModal(true);
-  };
-
-  // Reset filters function
-  const resetFilters = () => {
-    setFilterRole('');
-    setFilterEvent('');
-    setFilterDepartment('');
-    setFilterStatus('');
-  };
-
-  // Handle page change
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setPage(newPage);
-    }
-  };
-
-  // Apply filters
-  const applyFilters = () => {
-    // This would normally make a new API request with filters
-    // For now, we'll just filter the current data
-    setPage(1); // Reset to page 1 when applying filters
-  };
-
-  // Filter assignments based on selected filters
-  const filteredAssignments = assignments.filter(assignment => {
-    if (filterRole && assignment.role !== filterRole) return false;
+  // Handle financial limit changes
+  const handleFinancialLimitChange = (taskId, userId, role, value) => {
+    const key = `${role}-${taskId}-${userId}`;
+    // Ensure value is a valid number or empty string
+    const sanitizedValue = value === '' ? '' : Number(value) >= 0 ? value : '0';
     
-    if (filterEvent && assignment.event && assignment.event.name !== filterEvent) return false;
+    setFinancialLimitValues(prev => {
+      const updated = {
+        ...prev,
+        [key]: sanitizedValue
+      };
+      console.log(`Updated financial limit for ${role} ${userId} on task ${taskId} (min: 0, max: ${sanitizedValue})`);
+      return updated;
+    });
+  };
+
+  // Toggle financial limit
+  const toggleFinancialLimit = (taskId, userId, role) => {
+    const key = `${role}-${taskId}-${userId}`;
+    console.log('Toggling financial limit for:', key);
     
-    if (filterDepartment && assignment.department && assignment.department.name !== filterDepartment) return false;
-    
-    if (filterStatus) {
-      const assignmentStatus = assignment.status || assignment.task?.status;
-      if (!assignmentStatus || assignmentStatus.toLowerCase() !== filterStatus.toLowerCase()) {
-        return false;
+    setFinancialLimits(prev => {
+      const newState = {
+        ...prev,
+        [key]: !prev[key]
+      };
+      
+      // If turning on a financial limit and no value is set, initialize with empty string
+      if (newState[key] && !financialLimitValues[key]) {
+        setFinancialLimitValues(prevValues => ({
+          ...prevValues,
+          [key]: prevValues[key] || ''
+        }));
       }
+      
+      return newState;
+    });
+  };
+
+  // Add new task to RACI
+  const addNewTaskToRaci = (task) => {
+    setRaci(prevRaci => {
+      const updatedTasks = [...prevRaci.tasks, task];
+      return {
+        ...prevRaci,
+        tasks: updatedTasks
+      };
+    });
+  };
+
+  // Save task edit
+  const saveTaskEdit = () => {
+    if (editingTaskId && editingTaskName.trim()) {
+      // Update the task name in the RACI data
+      setRaci(prevRaci => {
+        const updatedTasks = prevRaci.tasks.map(task => 
+          task.id === editingTaskId ? { ...task, name: editingTaskName.trim() } : task
+        );
+        
+        return {
+          ...prevRaci,
+          tasks: updatedTasks
+        };
+      });
+      
+      // Also update the task name in the tasks state
+      setTasks(prevTasks => {
+        return prevTasks.map(task => 
+          task.id.toString() === editingTaskId.toString() ? { ...task, name: editingTaskName.trim() } : task
+        );
+      });
+    }
+    // Exit edit mode
+    setEditingTaskId(null);
+  };
+
+  // Start editing a task
+  const startEditingTask = (task) => {
+    setEditingTaskId(task.id);
+    setEditingTaskName(task.name);
+  };
+
+  // Add new task
+  const addNewTask = () => {
+    try {
+      console.log('Adding new task...');
+      
+      // Create a new task with a unique ID
+      // First find the maximum ID from both task states
+      const maxRaciId = raci.tasks && raci.tasks.length > 0 
+        ? Math.max(...raci.tasks.map(task => Number(task.id || 0)))
+        : 0;
+      
+      const maxTasksId = tasks && tasks.length > 0
+        ? Math.max(...tasks.map(task => Number(task.id || 0)))
+        : 0;
+      
+      const newId = Math.max(maxRaciId, maxTasksId) + 1;
+      const newIdStr = String(newId);
+      
+      // Create a new task for raci state
+      const newRaciTask = {
+        id: newIdStr,
+        name: '', // Blank name initially
+        assignments: []
+      };
+      
+      // Create a new task for tasks state
+      const newTask = {
+        id: newId,
+        name: '', // Blank name initially
+        responsible: [],
+        accountable: [],
+        consulted: [],
+        informed: []
+      };
+      
+      // Update both state objects
+      setRaci(prevRaci => ({
+        ...prevRaci,
+        tasks: [...(prevRaci.tasks || []), newRaciTask]
+      }));
+      
+      setTasks(prevTasks => [...prevTasks, newTask]);
+      
+      // Start editing the new task immediately
+      setTimeout(() => {
+        startEditingTask(newTask);
+      }, 10);
+      
+    } catch (error) {
+      console.error('Error adding new task:', error);
+    }
+  };
+
+  // Get display employees
+  const getDisplayEmployees = () => {
+    // Only return event employees when an event is selected
+    if (selectedEvent && eventEmployees && Array.isArray(eventEmployees) && eventEmployees.length > 0) {
+      return eventEmployees;
     }
     
-    return true;
-  });
+    // Only use company employees as a fallback if absolutely necessary
+    if (!selectedEvent) {
+      return employees;
+    }
+    
+    // If we have a selected event but no event employees, return empty array
+    return [];
+  };
 
-  return (
-    <div className="raci-tracker-container">
-      <div className="page-header">
-        <h1>My RACI Assignments</h1>
-        <p>View and track your responsibilities across all events</p>
-      </div>
+  // Formatting function for event status
+  const formatEventStatus = (status) => {
+    if (!status) return 'Not Started';
+    
+    const statusMap = {
+      'not_started': 'Not Started',
+      'in_progress': 'In Progress',
+      'pending_approval': 'Pending Approval',
+      'approved': 'Approved',
+      'completed': 'Completed',
+      'rejected': 'Rejected'
+    };
+    
+    return statusMap[status.toLowerCase()] || status;
+  };
 
-      {loading ? (
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Loading your assignments...</p>
+  // Function to render an event card with its RACI summary
+  const renderEventCard = (eventData) => {
+    const { event, raciData, hasData, error } = eventData;
+
+    return (
+      <div key={event.id} className="event-card">
+        <div className="event-header">
+          <h3>{event.name}</h3>
+          <span className={`event-status status-${event.status || 'not_started'}`}>
+            {formatEventStatus(event.status)}
+          </span>
         </div>
-      ) : error ? (
-        <div className="error-container">
-          <p>Error: {error}</p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="retry-button"
-          >
-            Retry
-          </button>
-        </div>
-      ) : (
-        <>
-          <div className="filters-container">
-            <div className="filters-grid">
-              <div className="filter-item">
-                <label htmlFor="role-filter">Role</label>
-                <select 
-                  id="role-filter" 
-                  value={filterRole} 
-                  onChange={(e) => setFilterRole(e.target.value)}
-                >
-                  <option value="">All Roles</option>
-                  <option value="R">Responsible (R)</option>
-                  <option value="A">Accountable (A)</option>
-                  <option value="C">Consulted (C)</option>
-                  <option value="I">Informed (I)</option>
-                </select>
-              </div>
-              
-              <div className="filter-item">
-                <label htmlFor="event-filter">Event</label>
-                <select 
-                  id="event-filter" 
-                  value={filterEvent} 
-                  onChange={(e) => setFilterEvent(e.target.value)}
-                >
-                  <option value="">All Events</option>
-                  {eventOptions.map((event, index) => (
-                    <option key={index} value={event}>{event}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div className="filter-item">
-                <label htmlFor="department-filter">Department</label>
-                <select 
-                  id="department-filter" 
-                  value={filterDepartment} 
-                  onChange={(e) => setFilterDepartment(e.target.value)}
-                >
-                  <option value="">All Departments</option>
-                  {departmentOptions.map((dept, index) => (
-                    <option key={index} value={dept}>{dept}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div className="filter-item">
-                <label htmlFor="status-filter">Status</label>
-                <select 
-                  id="status-filter" 
-                  value={filterStatus} 
-                  onChange={(e) => setFilterStatus(e.target.value)}
-                >
-                  <option value="">All Statuses</option>
-                  {statusOptions.map((status, index) => (
-                    <option key={index} value={status}>
-                      {formatStatusName(status)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            
-            <div className="filter-actions">
-              <button 
-                className="filter-button apply"
-                onClick={applyFilters}
-              >
-                Apply Filters
-              </button>
-              <button 
-                className="filter-button reset"
-                onClick={resetFilters}
-              >
-                Reset Filters
-              </button>
-            </div>
-          </div>
-
-          {filteredAssignments.length === 0 ? (
-            <div className="no-assignments">
-              <p>No RACI assignments found matching your filters.</p>
-            </div>
-          ) : (
-            <div className="assignments-container">
-              <div className="assignments-count">
-                <p>Showing {filteredAssignments.length} assignment{filteredAssignments.length !== 1 ? 's' : ''}</p>
-              </div>
-              
-              <div className="assignments-grid">
-                {filteredAssignments.map((assignment, index) => (
-                  <div key={index} className="assignment-card">
-                    <div className="assignment-header">
-                      <div 
-                        className="role-badge" 
-                        style={getRoleBadgeStyle(assignment.role)}
-                      >
-                        {getRoleName(assignment.role)} ({assignment.role})
-                      </div>
-                      
-                      {assignment.department && (
-                        <div className="department-badge">
-                          {assignment.department.name}
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="assignment-body">
-                      <h3 className="task-name">
-                        {assignment.task?.name || 'Unnamed Task'}
-                        
-                        {(assignment.status || assignment.task?.status) && (
-                          <span 
-                            className="status-badge"
-                            style={getStatusBadgeStyle(assignment.status || assignment.task?.status)}
-                          >
-                            {formatStatusName(assignment.status || assignment.task?.status)}
-                          </span>
-                        )}
-                      </h3>
-                      
-                      {assignment.task?.description && (
-                        <p className="task-description">
-                          {assignment.task.description.length > 120 
-                            ? `${assignment.task.description.substring(0, 120)}...` 
-                            : assignment.task.description}
-                        </p>
-                      )}
-                      
-                      <div className="event-details">
-                        <h4>Event:</h4>
-                        <p>{assignment.event?.name || 'Unknown Event'}</p>
-                        
-                        {assignment.event?.startDate && assignment.event?.endDate && (
-                          <p className="event-dates">
-                            {new Date(assignment.event.startDate).toLocaleDateString()} to {new Date(assignment.event.endDate).toLocaleDateString()}
-                          </p>
-                        )}
-                      </div>
-                      
-                      {assignment.financialLimits && (
-                        <div className="financial-limits">
-                          <h4>Financial Limits:</h4>
-                          <div className="limits-details">
-                            <p><strong>Min:</strong> {formatCurrency(assignment.financialLimits.min)}</p>
-                            <p><strong>Max:</strong> {formatCurrency(assignment.financialLimits.max)}</p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="assignment-footer">
-                      <button 
-                        className="view-details-btn"
-                        onClick={() => viewAssignmentDetails(assignment)}
-                      >
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        <div className="event-details">
+          {event.description && event.description.trim() ? (
+            <p>{event.description}</p>
+          ) : null}
+          {event.startDate && (
+            <div className="event-dates">
+              <span>Start: {new Date(event.startDate).toLocaleDateString()}</span>
+              {event.endDate && (
+                <span>End: {new Date(event.endDate).toLocaleDateString()}</span>
+              )}
             </div>
           )}
-        </>
-      )}
+        </div>
+        <div className="raci-summary">
+          <h4>RACI Matrix</h4>
+          {hasData ? (
+            <div className="raci-data">
+              <p>Total tasks: {raciData.tasks ? raciData.tasks.length : 0}</p>
+            </div>
+          ) : (
+            <div className="no-raci-data">
+              <p>{error || 'No RACI matrix defined yet'}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
 
-      {/* Assignment Details Modal */}
-      {showDetailsModal && selectedAssignment && (
-        <div className="modal-overlay">
-          <div className="details-modal">
-            <div className="modal-header">
-              <h2>Assignment Details</h2>
-              <button 
-                className="close-button"
-                onClick={() => setShowDetailsModal(false)}
-              >
-                &times;
-              </button>
+  // Calculate pending approval count - Include all events since they are in pending stage
+  const pendingApprovalCount = allEventsRaciData.filter(item => {
+    if (!item.event) return false;
+    
+    // Count all events as pending since they are in pending stage
+    return true;
+  }).length;
+
+  // Calculate total events with RACI matrix
+  const eventsWithRaciMatrix = allEventsRaciData.filter(item => item.hasData).length;
+
+  // Calculate approved matrices - This will be 0 since all are pending
+  const approvedMatrices = 0;
+
+  // Add useEffect to fetch company data
+  useEffect(() => {
+    const fetchCompanyData = async () => {
+      try {
+        const token = localStorage.getItem('raci_auth_token');
+        const response = await fetch(`${env.apiBaseUrl}/company/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setCompanyData(data);
+      } catch (error) {
+        console.error('Error fetching company data:', error);
+      }
+    };
+    
+    fetchCompanyData();
+  }, []);
+
+  return (
+    <div className="dashboard-layout fix-layout">
+      <aside className="sidebar">
+        <div className="brand" style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          padding: '15px 12px',
+          height: '64px',
+          borderBottom: '1px solid rgba(0,0,0,0.05)'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+            {renderCompanyLogo()}
+            <span style={{ 
+              fontWeight: '600', 
+              fontSize: '16px',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              color: '#111827'
+            }}>
+              {companyData?.name || 'Company Dashboard'}
+            </span>
+          </div>
+        </div>
+        
+        <nav>
+          <NavLink to="/company-admin/dashboard" className="nav-item">
+            <i className="icon">📊</i> Dashboard
+          </NavLink>
+          
+          <div 
+            className={`nav-item`}
+            onClick={() => toggleSection('users')}
+          >
+            <i className="icon">👥</i> 
+            <span>User Administration</span>
+            <i className={`dropdown-icon ${expandedSections.users ? 'open' : ''}`}>▼</i>
+          </div>
+          <div className={`sub-nav ${expandedSections.users ? 'open' : ''}`}>
+            <NavLink to="/company-admin/user-creation" className="nav-item">
+              User Creation
+            </NavLink>
+            <NavLink to="/company-admin/user-management" className="nav-item">
+              User Management
+            </NavLink>
+          </div>
+          
+          <div 
+            className={`nav-item`}
+            onClick={() => toggleSection('departments')}
+          >
+            <i className="icon">🏢</i> 
+            <span>Department Management</span>
+            <i className={`dropdown-icon ${expandedSections.departments ? 'open' : ''}`}>▼</i>
+          </div>
+          <div className={`sub-nav ${expandedSections.departments ? 'open' : ''}`}>
+            <NavLink to="/company-admin/department-management" className="nav-item">
+              Departments
+            </NavLink>
+            <NavLink to="/company-admin/department-creation" className="nav-item">
+              Create Department
+            </NavLink>
+          </div>
+          
+          <div 
+            className={`nav-item active`}
+            onClick={() => toggleSection('raci')}
+          >
+            <i className="icon">📅</i> 
+            <span>RACI Management</span>
+            <i className={`dropdown-icon ${expandedSections.raci ? 'open' : ''}`}>▼</i>
+          </div>
+          <div className={`sub-nav ${expandedSections.raci ? 'open' : ''}`}>
+            <NavLink to="/company-admin/event-master" className="nav-item">
+              Event Master
+            </NavLink>
+            <NavLink to="/company-admin/raci-assignment" className="nav-item">
+              RACI Assignment
+            </NavLink>
+            <NavLink to="/company-admin/raci-tracker" className="nav-item active">
+              RACI Tracker
+            </NavLink>
+          </div>
+          
+          <NavLink to="/company-admin/meeting-calendar" className="nav-item">
+            <i className="icon">📆</i> Meeting Calendar
+          </NavLink>
+          
+          <NavLink to="/company-admin/settings" className="nav-item">
+            <i className="icon">⚙️</i> Company Settings
+          </NavLink>
+          
+          <button className="nav-item" onClick={handleLogout} style={{
+            width: '100%',
+            textAlign: 'left',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '0.75rem 1rem',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <i className="icon">🚪</i> Logout
+          </button>
+        </nav>
+      </aside>
+      
+      <main className="dashboard-content fix-content">
+        <header className="dashboard-header">
+          <div className="dashboard-title">
+            {companyData ? companyData.name : 'Company'} Administration
+          </div>
+          <div className="header-actions">
+            <div className="user-info">
+              <div className="user-avatar">{companyData ? (companyData.name?.charAt(0) || 'C') : 'A'}</div>
+              <div className="user-details">
+                <div className="user-name">Administrator</div>
+                <div className="user-role">Company Admin</div>
+              </div>
             </div>
-            
-            <div className="modal-body">
-              {/* Task Information Section */}
-              <div className="detail-section">
-                <h3>Task Information</h3>
-                <div className="detail-grid">
-                  <div className="detail-item">
-                    <span className="detail-label">Task ID:</span>
-                    <span className="detail-value">{selectedAssignment.task?.id || 'N/A'}</span>
-                  </div>
-                  
-                  <div className="detail-item">
-                    <span className="detail-label">Task Name:</span>
-                    <span className="detail-value">{selectedAssignment.task?.name || 'Unnamed Task'}</span>
-                  </div>
-                  
-                  <div className="detail-item">
-                    <span className="detail-label">Status:</span>
-                    <span 
-                      className="status-pill"
-                      style={getStatusBadgeStyle(selectedAssignment.status || selectedAssignment.task?.status)}
-                    >
-                      {formatStatusName(selectedAssignment.status || selectedAssignment.task?.status || 'Not Set')}
-                    </span>
-                  </div>
-                  
-                  {selectedAssignment.task?.description && (
-                    <div className="detail-item full-width">
-                      <span className="detail-label">Description:</span>
-                      <span className="detail-value description">{selectedAssignment.task.description}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-              
-              {/* Assignment Information Section */}
-              <div className="detail-section">
-                <h3>Assignment Information</h3>
-                <div className="detail-grid">
-                  <div className="detail-item">
-                    <span className="detail-label">Assignment ID:</span>
-                    <span className="detail-value">{selectedAssignment.id || 'N/A'}</span>
-                  </div>
-                  
-                  <div className="detail-item">
-                    <span className="detail-label">Your Role:</span>
-                    <span 
-                      className="role-pill"
-                      style={getRoleBadgeStyle(selectedAssignment.role)}
-                    >
-                      {getRoleName(selectedAssignment.role)} ({selectedAssignment.role})
-                    </span>
-                  </div>
-                  
-                  <div className="detail-item">
-                    <span className="detail-label">Department:</span>
-                    <span className="detail-value">
-                      {selectedAssignment.department?.name || 'Not Assigned'}
-                    </span>
-                  </div>
-                  
-                  {selectedAssignment.financialLimits && (
-                    <>
-                      <div className="detail-item">
-                        <span className="detail-label">Min Financial Limit:</span>
-                        <span className="detail-value highlight">
-                          {formatCurrency(selectedAssignment.financialLimits.min)}
-                        </span>
-                      </div>
-                      
-                      <div className="detail-item">
-                        <span className="detail-label">Max Financial Limit:</span>
-                        <span className="detail-value highlight">
-                          {formatCurrency(selectedAssignment.financialLimits.max)}
-                        </span>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-              
-              {/* Event Information Section */}
-              <div className="detail-section">
-                <h3>Event Information</h3>
-                <div className="detail-grid">
-                  <div className="detail-item">
-                    <span className="detail-label">Event ID:</span>
-                    <span className="detail-value">{selectedAssignment.event?.id || 'N/A'}</span>
-                  </div>
-                  
-                  <div className="detail-item">
-                    <span className="detail-label">Event Name:</span>
-                    <span className="detail-value">{selectedAssignment.event?.name || 'Unknown Event'}</span>
-                  </div>
-                  
-                  {selectedAssignment.event?.startDate && (
-                    <div className="detail-item">
-                      <span className="detail-label">Start Date:</span>
-                      <span className="detail-value">
-                        {new Date(selectedAssignment.event.startDate).toLocaleDateString()}
-                      </span>
-                    </div>
-                  )}
-                  
-                  {selectedAssignment.event?.endDate && (
-                    <div className="detail-item">
-                      <span className="detail-label">End Date:</span>
-                      <span className="detail-value">
-                        {new Date(selectedAssignment.event.endDate).toLocaleDateString()}
-                      </span>
-                    </div>
-                  )}
-                  
-                  {selectedAssignment.event?.description && (
-                    <div className="detail-item full-width">
-                      <span className="detail-label">Event Description:</span>
-                      <span className="detail-value description">{selectedAssignment.event.description}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
+          </div>
+        </header>
+        
+        <div className="content-wrapper fix-wrapper">
+          <div className="page-header">
+            <h1>RACI Tracker Dashboard</h1>
+            <p>Track and manage responsibility matrices for all company events</p>
+          </div>
+          
+          <div className="dashboard-stats">
+            <div className="stat-card">
+              <div className="stat-value">{events.length}</div>
+              <div className="stat-label">Total Events</div>
             </div>
-            
-            <div className="modal-footer">
-              <button 
-                className="close-modal-btn"
-                onClick={() => setShowDetailsModal(false)}
-              >
-                Close
-              </button>
+            <div className="stat-card">
+              <div className="stat-value">{eventsWithRaciMatrix}</div>
+              <div className="stat-label">Events with RACI Matrix</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-value">{approvedMatrices}</div>
+              <div className="stat-label">Approved Matrices</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-value">{pendingApprovalCount}</div>
+              <div className="stat-label">Pending Approval</div>
+            </div>
+          </div>
+          
+          <div className="card">
+            <div className="card-header">
+              <h2>All Events</h2>
+            </div>
+            <div className="card-body">
+              {loadingEvents || loadingAllEventsRaci ? (
+                <div className="loading-indicator">Loading events data...</div>
+              ) : events.length === 0 ? (
+                <div className="no-data-message">
+                  <p>No events found. Create events to start defining RACI matrices.</p>
+                </div>
+              ) : (
+                <div className="events-grid">
+                  {allEventsRaciData.map(eventData => renderEventCard(eventData))}
+                </div>
+              )}
             </div>
           </div>
         </div>
-      )}
-
-      <style jsx>{`
-        .raci-tracker-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 1.5rem;
-        }
-        
-        .page-header {
-          margin-bottom: 2rem;
-        }
-        
-        .page-header h1 {
-          font-size: 1.875rem;
-          font-weight: 600;
-          color: #111827;
-          margin-bottom: 0.5rem;
-        }
-        
-        .page-header p {
-          font-size: 1rem;
-          color: #6b7280;
-        }
-        
-        .loading-container, .error-container, .no-assignments {
-          padding: 2rem;
-          text-align: center;
-          background-color: #f9fafb;
-          border-radius: 0.5rem;
-          margin-bottom: 1.5rem;
+      </main>
+      
+      <style jsx global>{`
+        .fix-layout {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 200px;
-        }
-        
-        .loading-spinner {
-          width: 40px;
-          height: 40px;
-          border: 4px solid rgba(0, 0, 0, 0.1);
-          border-radius: 50%;
-          border-top-color: #3b82f6;
-          animation: spin 1s ease-in-out infinite;
-          margin-bottom: 1rem;
-        }
-        
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-        
-        .error-container {
-          background-color: #fee2e2;
-          color: #b91c1c;
-        }
-        
-        .retry-button {
-          margin-top: 1rem;
-          padding: 0.5rem 1rem;
-          background-color: #dc2626;
-          color: white;
-          border: none;
-          border-radius: 0.25rem;
-          cursor: pointer;
-        }
-        
-        .retry-button:hover {
-          background-color: #b91c1c;
-        }
-        
-        .filters-container {
-          background-color: #f9fafb;
-          padding: 1rem;
-          border-radius: 0.5rem;
-          margin-bottom: 1.5rem;
-        }
-        
-        .filters-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 1rem;
-        }
-        
-        .filter-item label {
-          display: block;
-          font-size: 0.875rem;
-          font-weight: 500;
-          margin-bottom: 0.5rem;
-          color: #4b5563;
-        }
-        
-        .filter-item select {
           width: 100%;
-          padding: 0.5rem;
-          border: 1px solid #d1d5db;
-          border-radius: 0.25rem;
-          background-color: white;
-          font-size: 0.875rem;
-        }
-        
-        .filter-actions {
-          display: flex;
-          justify-content: flex-end;
-          gap: 1rem;
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px solid #e5e7eb;
-        }
-        
-        .filter-button {
-          padding: 0.5rem 1rem;
-          border-radius: 0.25rem;
-          font-size: 0.875rem;
-          font-weight: 500;
-          cursor: pointer;
-        }
-        
-        .filter-button.apply {
-          background-color: #3b82f6;
-          color: white;
-          border: none;
-        }
-        
-        .filter-button.apply:hover {
-          background-color: #2563eb;
-        }
-        
-        .filter-button.reset {
-          background-color: transparent;
-          color: #6b7280;
-          border: 1px solid #d1d5db;
-        }
-        
-        .filter-button.reset:hover {
-          background-color: #f3f4f6;
-        }
-        
-        .assignments-count {
-          margin-bottom: 1rem;
-          font-size: 0.875rem;
-          color: #6b7280;
-        }
-        
-        .assignments-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 1.5rem;
-        }
-        
-        .assignment-card {
-          background-color: white;
-          border-radius: 0.5rem;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          height: 100vh;
           overflow: hidden;
+          position: relative;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .sidebar {
+          width: 260px;
+          height: 100vh;
+          background-color: white;
+          border-right: 1px solid #e5e7eb;
           display: flex;
           flex-direction: column;
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .assignment-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        .assignment-header {
-          padding: 1rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .role-badge {
-          display: inline-block;
-          padding: 0.25rem 0.75rem;
-          border-radius: 9999px;
-          font-size: 0.75rem;
-          font-weight: 600;
-        }
-        
-        .department-badge {
-          font-size: 0.75rem;
-          color: #6b7280;
-        }
-        
-        .assignment-body {
-          padding: 1rem;
-          flex-grow: 1;
-        }
-        
-        .task-name {
-          font-size: 1.125rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: #111827;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        .status-badge {
-          display: inline-block;
-          padding: 0.25rem 0.5rem;
-          border-radius: 9999px;
-          font-size: 0.625rem;
-          font-weight: 500;
-          white-space: nowrap;
-        }
-        
-        .task-description {
-          font-size: 0.875rem;
-          color: #6b7280;
-          margin-bottom: 1rem;
-        }
-        
-        .event-details, .financial-limits {
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px solid #e5e7eb;
-        }
-        
-        .event-details h4, .financial-limits h4 {
-          font-size: 0.875rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: #4b5563;
-        }
-        
-        .event-details p {
-          font-size: 0.875rem;
-          color: #6b7280;
-        }
-        
-        .event-dates {
-          font-size: 0.75rem;
-          color: #9ca3af;
-          margin-top: 0.25rem;
-        }
-        
-        .limits-details {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.875rem;
-        }
-        
-        .assignment-footer {
-          padding: 1rem;
-          border-top: 1px solid #e5e7eb;
-          text-align: right;
-        }
-        
-        .view-details-btn {
-          padding: 0.5rem 1rem;
-          background-color: #f9fafb;
-          border: 1px solid #d1d5db;
-          border-radius: 0.25rem;
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #4b5563;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        
-        .view-details-btn:hover {
-          background-color: #f3f4f6;
-          color: #111827;
-        }
-        
-        .pagination-controls {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 1rem;
-          margin-top: 2rem;
-        }
-        
-        .pagination-button {
-          padding: 0.5rem 1rem;
-          background-color: #f9fafb;
-          border: 1px solid #d1d5db;
-          border-radius: 0.25rem;
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #4b5563;
-          cursor: pointer;
-        }
-        
-        .pagination-button:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        
-        .pagination-button:not(:disabled):hover {
-          background-color: #f3f4f6;
-          color: #111827;
-        }
-        
-        .pagination-info {
-          font-size: 0.875rem;
-          color: #6b7280;
-        }
-        
-        /* Modal styles */
-        .modal-overlay {
-          position: fixed;
+          overflow-y: auto;
+          position: sticky;
           top: 0;
           left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 50;
+          z-index: 10;
+          margin: 0;
+          padding: 0;
         }
         
-        .details-modal {
-          background-color: white;
-          border-radius: 0.5rem;
-          width: 90%;
-          max-width: 800px;
-          max-height: 90vh;
-          overflow-y: auto;
+        .fix-content {
+          flex: 1;
           display: flex;
           flex-direction: column;
-        }
-        
-        .modal-header {
-          padding: 1rem;
-          border-bottom: 1px solid #e5e7eb;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        
-        .modal-header h2 {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: #111827;
+          overflow-y: auto;
+          height: 100vh;
+          padding: 0 !important;
           margin: 0;
         }
         
-        .close-button {
-          background: none;
-          border: none;
-          font-size: 1.5rem;
-          color: #6b7280;
-          cursor: pointer;
+        .fix-wrapper {
+          padding: 1.5rem !important;
+          margin: 0 !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+          width: 100% !important;
         }
         
-        .close-button:hover {
-          color: #111827;
-        }
-        
-        .modal-body {
-          padding: 1rem;
-          flex-grow: 1;
-        }
-        
-        .detail-section {
-          margin-bottom: 1.5rem;
+        .dashboard-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
           border-bottom: 1px solid #e5e7eb;
-          padding-bottom: 1rem;
+          background-color: white;
+          position: sticky;
+          top: 0;
+          z-index: 5;
+          margin: 0;
+          width: 100%;
         }
         
-        .detail-section:last-child {
-          border-bottom: none;
-        }
-        
-        .detail-section h3 {
-          font-size: 1rem;
+        .dashboard-title {
+          font-size: 1.25rem;
           font-weight: 600;
           color: #111827;
-          margin-bottom: 1rem;
         }
         
-        .detail-grid {
+        .user-info {
+          display: flex;
+          align-items: center;
+        }
+        
+        .user-avatar {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: #4f46e5;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          margin-right: 0.75rem;
+        }
+        
+        .user-name {
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+        
+        .user-role {
+          font-size: 0.8rem;
+          color: #6b7280;
+        }
+        
+        .page-header h1 {
+          margin: 0 0 0.25rem 0;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        
+        .page-header p {
+          margin: 0;
+          color: #6b7280;
+        }
+        
+        .dashboard-stats {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 1rem;
+          margin: 1.5rem 0;
+        }
+        
+        .stat-card {
+          background: white;
+          padding: 1.25rem;
+          border-radius: 0.5rem;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+          text-align: center;
+        }
+        
+        .stat-value {
+          font-size: 1.75rem;
+          font-weight: 600;
+          color: #4f46e5;
+          margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+          font-size: 0.95rem;
+          color: #6b7280;
+        }
+        
+        .card {
+          background: white;
+          border-radius: 0.5rem;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+          margin-bottom: 1.5rem;
+          overflow: hidden;
+        }
+        
+        .card-header {
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid #e5e7eb;
+          background-color: #f9fafb;
+        }
+        
+        .card-header h2 {
+          margin: 0;
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: #111827;
+        }
+        
+        .card-body {
+          padding: 1.5rem;
+        }
+        
+        .events-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
           gap: 1rem;
         }
         
-        .detail-item {
+        .event-card {
+          background: white;
+          border-radius: 0.375rem;
+          border: 1px solid #e5e7eb;
+          padding: 1.25rem;
+          transition: transform 0.15s, box-shadow 0.15s;
+        }
+        
+        .event-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+        }
+        
+        .event-header {
           display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
         }
         
-        .detail-item.full-width {
-          grid-column: 1 / -1;
-        }
-        
-        .detail-label {
-          font-size: 0.75rem;
-          font-weight: 500;
-          color: #6b7280;
-        }
-        
-        .detail-value {
-          font-size: 0.875rem;
+        .event-header h3 {
+          font-size: 1.125rem;
+          font-weight: 600;
+          margin: 0;
           color: #111827;
         }
         
-        .detail-value.description {
-          white-space: pre-wrap;
-        }
-        
-        .status-pill, .role-pill {
-          display: inline-block;
-          padding: 0.25rem 0.75rem;
-          border-radius: 9999px;
+        .event-status {
           font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+          border-radius: 9999px;
           font-weight: 500;
-          margin-top: 0.25rem;
         }
         
-        .team-members-list {
+        .status-not_started {
+          background: #f3f4f6;
+          color: #4b5563;
+        }
+        
+        .status-in_progress {
+          background: #dbeafe;
+          color: #1e40af;
+        }
+        
+        .status-pending_approval {
+          background: #fef3c7;
+          color: #92400e;
+        }
+        
+        .status-approved {
+          background: #d1fae5;
+          color: #065f46;
+        }
+        
+        .status-completed {
+          background: #c7d2fe;
+          color: #3730a3;
+        }
+        
+        .status-rejected {
+          background: #fee2e2;
+          color: #991b1b;
+        }
+        
+        .event-details {
+          margin-bottom: 0.75rem;
+        }
+        
+        .event-details p {
+          margin: 0 0 0.5rem;
+          color: #6b7280;
+          font-size: 0.95rem;
+          min-height: 1.5em;
+          display: block;
+        }
+        
+        .event-dates {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 0.5rem;
+          font-size: 0.8rem;
+          color: #6b7280;
+        }
+        
+        .raci-summary {
+          padding-top: 0.75rem;
+          border-top: 1px solid #e5e7eb;
+        }
+        
+        .raci-summary h4 {
+          font-size: 1rem;
+          font-weight: 500;
+          margin: 0 0 0.5rem;
+          color: #111827;
+        }
+        
+        .raci-data {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .raci-data p {
+          margin: 0;
+          font-size: 0.95rem;
+          color: #4b5563;
+        }
+        
+        .no-raci-data {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
         }
         
-        .team-member-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0.5rem;
-          background-color: #f9fafb;
-          border-radius: 0.25rem;
+        .no-raci-data p {
+          margin: 0;
+          font-size: 0.95rem;
+          color: #6b7280;
+          font-style: italic;
         }
         
-        .member-name {
-          font-size: 0.875rem;
-          color: #111827;
-        }
-        
-        .member-role {
-          font-size: 0.75rem;
-          padding: 0.125rem 0.5rem;
-          border-radius: 9999px;
-        }
-        
-        .modal-footer {
-          padding: 1rem;
-          border-top: 1px solid #e5e7eb;
-          display: flex;
-          justify-content: flex-end;
-        }
-        
-        .close-modal-btn {
-          padding: 0.5rem 1rem;
-          background-color: #f3f4f6;
-          border: 1px solid #d1d5db;
-          border-radius: 0.25rem;
-          font-size: 0.875rem;
+        .btn {
+          display: inline-block;
           font-weight: 500;
-          color: #4b5563;
+          text-align: center;
+          vertical-align: middle;
           cursor: pointer;
+          padding: 0.5rem 1rem;
+          border-radius: 0.375rem;
+          border: none;
+          transition: background-color 0.15s;
         }
         
-        .close-modal-btn:hover {
-          background-color: #e5e7eb;
+        .btn-sm {
+          padding: 0.25rem 0.75rem;
+          font-size: 0.75rem;
+          border-radius: 0.25rem;
         }
         
-        @media (max-width: 768px) {
-          .assignments-grid {
-            grid-template-columns: 1fr;
+        .btn-primary {
+          background-color: #4f46e5;
+          color: white;
+        }
+        
+        .btn-primary:hover {
+          background-color: #4338ca;
+        }
+        
+        .loading-indicator {
+          text-align: center;
+          padding: 2rem;
+          color: #6b7280;
+        }
+        
+        .no-data-message {
+          text-align: center;
+          padding: 2rem;
+          color: #6b7280;
+        }
+        
+        /* Sidebar nav styling */
+        .brand {
+          height: 64px;
+          padding: 15px 12px;
+          border-bottom: 1px solid rgba(0,0,0,0.05);
+          background-color: white;
+          position: sticky;
+          top: 0;
+          z-index: 2;
+        }
+        
+        nav {
+          padding: 0;
+          overflow-y: auto;
+        }
+        
+        .sub-nav {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+          background-color: rgba(249, 250, 251, 0.5);
+        }
+        
+        .sub-nav.open {
+          max-height: 500px;
+        }
+        
+        .nav-item {
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          color: #4b5563;
+          text-decoration: none;
+          position: relative;
+          font-size: 0.95rem;
+          transition: background-color 0.15s;
+        }
+        
+        .nav-item:hover {
+          background-color: #f3f4f6;
+        }
+        
+        .nav-item.active {
+          color: #4f46e5;
+          font-weight: 500;
+        }
+        
+        .sub-nav .nav-item {
+          padding-left: 2.5rem;
+        }
+        
+        .icon {
+          margin-right: 0.75rem;
+          display: inline-block;
+          width: 1.25rem;
+          text-align: center;
+        }
+        
+        .dropdown-icon {
+          position: absolute;
+          right: 1rem;
+          font-size: 0.75rem;
+          transition: transform 0.2s;
+        }
+        
+        .dropdown-icon.open {
+          transform: rotate(180deg);
+        }
+        
+        @media (max-width: 1024px) {
+          .fix-layout {
+            flex-direction: column;
+            height: auto;
+            min-height: 100vh;
           }
           
-          .detail-grid {
-            grid-template-columns: 1fr;
+          .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            border-right: none;
+            border-bottom: 1px solid #e5e7eb;
           }
-        }
-
-        .detail-value.highlight {
-          color: #4f46e5;
-          font-weight: 600;
-          font-size: 1rem;
+          
+          .fix-content {
+            margin-left: 0;
+            height: auto;
+          }
+          
+          .sub-nav.open {
+            max-height: 300px;
+          }
+          
+          .brand {
+            position: static;
+          }
         }
       `}</style>
     </div>
@@ -1068,4 +1272,3 @@ const RACITracker = () => {
 };
 
 export default RACITracker;
-       

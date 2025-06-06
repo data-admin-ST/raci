@@ -672,6 +672,10 @@ const CreateUser = () => {
         </div>
         
         <nav>
+          <NavLink to="/company-admin/dashboard" className="nav-item">
+            <i className="icon">📊</i> Dashboard
+          </NavLink>
+          
           <div 
             className={`nav-item active`}
             onClick={() => toggleSection('users')}
@@ -699,10 +703,10 @@ const CreateUser = () => {
           </div>
           <div className={`sub-nav ${expandedSections.departments ? 'open' : ''}`}>
             <NavLink to="/company-admin/department-management" className="nav-item">
-              Departments
+              Department List
             </NavLink>
-            <NavLink to="/company-admin/hod-management" className="nav-item">
-              HOD Management
+            <NavLink to="/company-admin/department-creation" className="nav-item">
+              Create Department
             </NavLink>
           </div>
           

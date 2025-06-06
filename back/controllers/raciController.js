@@ -6,6 +6,16 @@ function serializeFinancialLimits(financialLimits) {
   return financialLimits ? JSON.stringify(financialLimits) : null;
 }
 
+function deserializeFinancialLimits(financialLimits) {
+  if (!financialLimits) return null;
+  try {
+    return JSON.parse(financialLimits);
+  } catch (e) {
+    console.error('Error parsing financial limits:', e);
+    return null;
+  }
+}
+
 // @desc    Create a new RACI matrix
 // @route   POST /api/raci-matrices
 // @access  Private (company_admin or hod)
@@ -520,24 +530,48 @@ exports.deleteRaciMatrix = async (req, res, next) => {
 exports.getMyRaciAssignments = async (req, res, next) => {
   try {
     const userId = req.user.user_id;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const page = parseInt(req.query.page) || 1;
+    const offset = (page - 1) * pageSize;
 
+    // Get total count
+    const countResult = await db.query(
+      `SELECT COUNT(*) FROM raci_assignments WHERE user_id = $1`,
+      [userId]
+    );
+    const totalItems = parseInt(countResult.rows[0].count);
+
+    // If no assignments found, return empty array
+    if (totalItems === 0) {
+      return res.status(200).json({
+        success: true,
+        totalItems: 0,
+        totalPages: 0,
+        currentPage: page,
+        data: []
+      });
+    }
+
+    // Get assignments with pagination
     const { rows } = await db.query(
       `SELECT ra.id, ra.role, ra.financial_limits, 
               t.task_id, t.name as task_name, t.description as task_description,
               e.event_id, e.name as event_name, e.start_date, e.end_date,
               d.department_id, d.name as department_name
-         FROM raci_assignments ra
-         JOIN tasks t ON ra.task_id = t.task_id
-         JOIN events e ON ra.event_id = e.event_id
-         JOIN departments d ON e.department_id = d.department_id
-        WHERE ra.user_id = $1`,
-      [userId]
+       FROM raci_assignments ra
+       JOIN tasks t ON ra.task_id = t.task_id
+       JOIN events e ON ra.event_id = e.event_id
+       JOIN departments d ON e.department_id = d.department_id
+       WHERE ra.user_id = $1
+       ORDER BY ra.id DESC
+       LIMIT $2 OFFSET $3`,
+      [userId, pageSize, offset]
     );
 
     const assignments = rows.map(row => ({
       id: row.id,
       role: row.role,
-      financialLimits: row.financial_limits ? JSON.parse(row.financial_limits) : null,
+      financialLimits: deserializeFinancialLimits(row.financial_limits),
       task: {
         id: row.task_id,
         name: row.task_name,
@@ -557,9 +591,131 @@ exports.getMyRaciAssignments = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
+      totalItems,
+      totalPages: Math.ceil(totalItems / pageSize),
+      currentPage: page,
       data: assignments
     });
   } catch (error) {
-    next(error);
+    console.error('Error in getMyRaciAssignments:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve RACI assignments',
+      error: error.message
+    });
+  }
+};
+
+// Helper to serialize and deserialize financial limits
+function serializeFinancialLimits(financialLimits) {
+  return financialLimits ? JSON.stringify(financialLimits) : null;
+}
+
+function deserializeFinancialLimits(financialLimits) {
+  if (!financialLimits) return null;
+  try {
+    return JSON.parse(financialLimits);
+  } catch (e) {
+    console.error('Error parsing financial limits:', e);
+    return null;
+  }
+}
+
+// @desc    Get company RACI assignments (for company admins)
+// @route   GET /api/raci-tracker/company
+// @access  Private (company_admin)
+exports.getCompanyRaciAssignments = async (req, res, next) => {
+  try {
+    console.log('Fetching company RACI assignments...');
+    const companyId = req.user.company_id;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const page = parseInt(req.query.page) || 1;
+    const offset = (page - 1) * pageSize;
+
+    // Get count of records
+    const countResult = await db.query(
+      `SELECT COUNT(ra.id) 
+       FROM raci_assignments ra
+       JOIN users u ON ra.user_id = u.user_id
+       WHERE u.company_id = $1`,
+      [companyId]
+    );
+    
+    const totalItems = parseInt(countResult.rows[0].count);
+    console.log(`Found ${totalItems} RACI assignments for company ${companyId}`);
+
+    // If no assignments, return empty array
+    if (totalItems === 0) {
+      return res.status(200).json({
+        success: true,
+        message: "No RACI assignments found for this company",
+        totalItems: 0,
+        totalPages: 0,
+        currentPage: page,
+        data: []
+      });
+    }
+
+    // Get RACI assignments for the company with pagination
+    const { rows } = await db.query(
+      `SELECT ra.id, ra.role, ra.user_id, ra.financial_limits, 
+              u.user_id, u.full_name, u.email, u.role as user_role,
+              t.task_id, t.name as task_name, t.description as task_description,
+              e.event_id, e.name as event_name, e.start_date, e.end_date, e.status as event_status,
+              d.department_id, d.name as department_name
+       FROM raci_assignments ra
+       JOIN users u ON ra.user_id = u.user_id
+       JOIN tasks t ON ra.task_id = t.task_id
+       JOIN events e ON ra.event_id = e.event_id
+       JOIN departments d ON e.department_id = d.department_id
+       WHERE u.company_id = $1
+       ORDER BY ra.id DESC
+       LIMIT $2 OFFSET $3`,
+      [companyId, pageSize, offset]
+    );
+
+    // Format the response
+    const assignments = rows.map(row => ({
+      id: row.id,
+      user: {
+        id: row.user_id,
+        name: row.full_name,
+        email: row.email,
+        role: row.user_role
+      },
+      role: row.role,
+      financialLimits: deserializeFinancialLimits(row.financial_limits),
+      task: {
+        id: row.task_id,
+        name: row.task_name,
+        description: row.task_description
+      },
+      event: {
+        id: row.event_id,
+        name: row.event_name,
+        status: row.event_status,
+        startDate: row.start_date,
+        endDate: row.end_date
+      },
+      department: {
+        id: row.department_id,
+        name: row.department_name
+      }
+    }));
+
+    res.status(200).json({
+      success: true,
+      totalItems,
+      totalPages: Math.ceil(totalItems / pageSize),
+      currentPage: page,
+      data: assignments
+    });
+  } catch (error) {
+    console.error('Error in getCompanyRaciAssignments:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to retrieve company RACI assignments',
+      error: error.message
+    });
   }
 };

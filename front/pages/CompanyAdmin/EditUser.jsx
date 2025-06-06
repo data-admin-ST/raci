@@ -20,18 +20,19 @@ const EditUser = () => {
     designation: '',
     phone: '',
     employeeId: '',
-    departmentId: ''
+    departmentId: '',
+    location: '',
+    hodId: ''
   });
-
-  // Add state for expanded sections and company data
   const [companyData, setCompanyData] = useState(null);
   const [expandedSections, setExpandedSections] = useState({
-    users: true, // Auto-expand the users section since we're on a user page
+    users: true,
     departments: false,
     raci: false
   });
-  
-  // Toggle sidebar sections
+  const [hods, setHODs] = useState([]);
+  const [loadingHODs, setLoadingHODs] = useState(false);
+
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
       ...prev,
@@ -46,7 +47,6 @@ const EditUser = () => {
     }
   };
 
-  // Fetch company data for the sidebar
   useEffect(() => {
     const fetchCompanyData = async () => {
       try {
@@ -71,13 +71,11 @@ const EditUser = () => {
     fetchCompanyData();
   }, []);
 
-  // Load user data
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         setLoading(true);
         
-        // Direct fetch to handle errors better
         const token = localStorage.getItem('raci_auth_token');
         const response = await fetch(`${env.apiBaseUrl}/users/${id}`, {
           headers: {
@@ -100,10 +98,11 @@ const EditUser = () => {
           designation: userData.designation || '',
           phone: userData.phone || '',
           employeeId: userData.employeeId || '',
-          departmentId: userData.department?.id || ''
+          departmentId: userData.department?.id || '',
+          location: userData.location || '',
+          hodId: userData.hod?.id || ''
         });
         
-        // Fetch departments
         if (userData.company && userData.company.id) {
           try {
             const deptResponse = await fetch(`${env.apiBaseUrl}/companies/${userData.company.id}/departments`, {
@@ -120,6 +119,28 @@ const EditUser = () => {
             }
           } catch (error) {
             console.error('Failed to fetch departments:', error);
+          }
+        }
+
+        // Fetch HODs
+        if (userData.company && userData.company.id) {
+          setLoadingHODs(true);
+          try {
+            const hodResponse = await fetch(`${env.apiBaseUrl}/companies/${userData.company.id}/hods`, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+              }
+            });
+            
+            if (hodResponse.ok) {
+              const hodData = await hodResponse.json();
+              setHODs(hodData);
+            }
+          } catch (error) {
+            console.error('Failed to fetch HODs:', error);
+          } finally {
+            setLoadingHODs(false);
           }
         }
       } catch (error) {
@@ -150,7 +171,6 @@ const EditUser = () => {
     setSuccess('');
 
     try {
-      // Direct fetch for better error handling
       const token = localStorage.getItem('raci_auth_token');
       const response = await fetch(`${env.apiBaseUrl}/users/${id}`, {
         method: 'PUT',
@@ -169,7 +189,6 @@ const EditUser = () => {
       setSuccess('User updated successfully!');
       
       setTimeout(() => {
-        // Ensure we navigate to user management page
         navigate('/company-admin/user-management', { state: { refreshData: true } });
       }, 1500);
     } catch (error) {
@@ -224,7 +243,6 @@ const EditUser = () => {
                     objectFit: 'contain'
                   }}
                   onError={(e) => {
-                    // Replace with first letter of company name inside a colored circle
                     const parent = e.target.parentNode;
                     parent.innerHTML = `<div style="width: 40px; height: 40px; border-radius: 50%; background-color: #4f46e5; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px;">${companyData?.name ? companyData.name.charAt(0).toUpperCase() : 'C'}</div>`;
                   }}
@@ -249,6 +267,10 @@ const EditUser = () => {
         </div>
         
         <nav>
+          <NavLink to="/company-admin/dashboard" className="nav-item">
+            <i className="icon">📊</i> Dashboard
+          </NavLink>
+          
           <div 
             className={`nav-item active`}
             onClick={() => toggleSection('users')}
@@ -278,8 +300,8 @@ const EditUser = () => {
             <NavLink to="/company-admin/department-management" className="nav-item">
               Departments
             </NavLink>
-            <NavLink to="/company-admin/hod-management" className="nav-item">
-              HOD Management
+            <NavLink to="/company-admin/department-creation" className="nav-item">
+              Create Department
             </NavLink>
           </div>
           
@@ -326,7 +348,7 @@ const EditUser = () => {
         </nav>
       </aside>
       
-      <main className="dashboard-content">
+      <main className="dashboard-content fix-content">
         <header className="dashboard-header">
           <div className="dashboard-title">
             {companyData ? companyData.name : 'Company'} Administration
@@ -339,11 +361,10 @@ const EditUser = () => {
                 <div className="user-role">Company Admin</div>
               </div>
             </div>
-            {/* Logout button removed from header as it exists in the sidebar */}
           </div>
         </header>
         
-        <div className="content-wrapper">
+        <div className="content-wrapper fix-wrapper">
           <div className="page-header">
             <h1>Edit User</h1>
           </div>
@@ -373,8 +394,16 @@ const EditUser = () => {
             </div>
           )}
           
-          <div className="card" style={{ background: 'white', borderRadius: '12px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', padding: '1.5rem' }}>
-            <form onSubmit={handleSubmit} className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="card fix-card">
+            <div className="card-header" style={{ 
+              borderBottom: '1px solid #e5e7eb',
+              paddingBottom: '1rem',
+              marginBottom: '1.5rem'
+            }}>
+              <h2>User Information</h2>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="form-grid fix-form">
               <div className="form-group">
                 <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>Full Name *</label>
                 <input
@@ -515,6 +544,57 @@ const EditUser = () => {
                   }}
                 />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="location" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Location *</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  value={formData.location || ''}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter location (e.g., New York, USA)"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    fontSize: '1rem'
+                  }}
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="hodId" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Head of Department</label>
+                <select
+                  id="hodId"
+                  name="hodId"
+                  value={formData.hodId || ''}
+                  onChange={handleChange}
+                  disabled={loadingHODs}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    fontSize: '1rem'
+                  }}
+                >
+                  <option value="">Select HOD (Optional)</option>
+                  {hods && hods.map(hod => (
+                    <option key={hod.id} value={hod.id}>
+                      {hod.name}
+                    </option>
+                  ))}
+                </select>
+                {loadingHODs && (
+                  <div style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#6b7280', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', border: '2px solid #e5e7eb', borderTopColor: '#6366f1', animation: 'spin 1s linear infinite', marginRight: '0.5rem' }}></div>
+                    Loading HODs...
+                  </div>
+                )}
+              </div>
               
               <div className="form-actions" style={{ 
                 marginTop: '20px', 
@@ -544,9 +624,9 @@ const EditUser = () => {
                   disabled={saving}
                   style={{ 
                     padding: '0.75rem 1.5rem', 
-                    background: saving ? '#94a3b8' : '#4f46e5', 
-                    color: 'white', 
-                    border: 'none', 
+
+
+                    color: 'white',                    background: saving ? '#94a3b8' : '#4f46e5',                     border: 'none', 
                     borderRadius: '8px',
                     fontWeight: '500',
                     cursor: saving ? 'not-allowed' : 'pointer'
@@ -557,14 +637,14 @@ const EditUser = () => {
               </div>
             </form>
           </div>
-          
-          <style>{`
-            @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-            }
-          `}</style>
         </div>
+        
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
       </main>
     </div>
   );

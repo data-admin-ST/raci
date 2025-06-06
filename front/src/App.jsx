@@ -56,7 +56,9 @@ function App() {
         <Route path="/company-admin/users/edit/:id" element={<PrivateRoute element={<EditUser />} />} />
         <Route path="/company-admin/departments" element={<PrivateRoute element={<DepartmentManagement />} />} />
         <Route path="/company-admin/departments/create" element={<PrivateRoute element={<CreateDepartment />} />} />
-        <Route path="/raci-tracker" element={<PrivateRoute><RACITracker /></PrivateRoute>} />
+        <Route path="/company-admin/department-management" element={<DepartmentManagement />} />
+        <Route path="/company-admin/department-creation" element={<CreateDepartment />} />
+        <Route path="/company-admin/raci-tracker" element={<RACITracker />} />
       </Routes>
     </BrowserRouter>
   );

@@ -44,4 +44,30 @@ const logger = winston.createLogger({
   ]
 });
 
-module.exports = logger;
+/**
+ * Simple logger utility for the application
+ */
+const utilsLogger = {
+  info: (message) => {
+    logger.info(message);
+  },
+  error: (message) => {
+    logger.error(message);
+  },
+  debug: (message) => {
+    logger.debug(message);
+  },
+  warn: (message) => {
+    logger.warn(message);
+  },
+  // Add http method to handle HTTP requests logging
+  http: (message) => {
+    logger.http(message);
+  },
+  // Generic log method
+  log: (level, message) => {
+    logger.log(level, message);
+  }
+};
+
+module.exports = utilsLogger;

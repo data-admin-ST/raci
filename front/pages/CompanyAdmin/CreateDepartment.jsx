@@ -294,11 +294,11 @@ const CreateDepartment = () => {
             <i className={`dropdown-icon ${expandedSections.departments ? 'open' : ''}`}>▼</i>
           </div>
           <div className={`sub-nav ${expandedSections.departments ? 'open' : ''}`}>
-            <NavLink to="/company-admin/department-management" className="nav-item active">
+            <NavLink to="/company-admin/department-management" className="nav-item">
               Departments
             </NavLink>
-            <NavLink to="/company-admin/hod-management" className="nav-item">
-              HOD Management
+             <NavLink to="/company-admin/department-creation" className="nav-item active">
+              Create Department
             </NavLink>
           </div>
           
@@ -397,7 +397,8 @@ const CreateDepartment = () => {
             padding: '1.5rem',
             marginBottom: '1.5rem',
             width: '100%',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            display: 'block'
           }}>
             <div className="card-header" style={{ 
               borderBottom: '1px solid #e5e7eb',
@@ -405,6 +406,9 @@ const CreateDepartment = () => {
               marginBottom: '1.5rem'
             }}>
               <h2>Department Information</h2>
+              <p style={{ color: '#6b7280', marginTop: '0.5rem', marginBottom: '0' }}>
+                Enter the details for the new department below
+              </p>
             </div>
             
             <form onSubmit={handleSubmit} style={{
@@ -414,8 +418,8 @@ const CreateDepartment = () => {
               width: '100%',
               boxSizing: 'border-box'
             }}>
-              <div className="form-group" style={{ width: '100%', boxSizing: 'border-box' }}>
-                <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>Department Name *</label>
+              <div className="form-group" style={{ width: '100%', boxSizing: 'border-box', display: 'block' }}>
+                <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Department Name *</label>
                 <input
                   type="text"
                   id="name"
@@ -430,7 +434,8 @@ const CreateDepartment = () => {
                     border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '1rem',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    display: 'block'
                   }}
                 />
               </div>

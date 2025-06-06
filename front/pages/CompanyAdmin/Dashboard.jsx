@@ -366,9 +366,11 @@ const CompanyAdminDashboard = () => {
           </div>
           <div className={`sub-nav ${expandedSections.departments ? 'open' : ''}`}>
             <NavLink to="/company-admin/department-management" className="nav-item">
-              Departments
+              Department List
             </NavLink>
-            {/* Removed HOD Management link */}
+            <NavLink to="/company-admin/department-creation" className="nav-item">
+                         Create Department
+                       </NavLink>
           </div>
           
           <div 

@@ -6530,3 +6530,1349 @@ Please make sure your database server is running at `dbprovider.us-east-1.clawcl
 2025-06-06 01:21:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
 2025-06-06 01:22:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
 2025-06-06 01:22:06 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:11:17 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-06 11:11:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:11:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:12:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:12:01 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:12:06 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:12:06 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:12:06 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:12:07 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:12:07 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:12:07 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:19:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:19:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:24:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:24:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:25:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:25:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:25:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:25:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:26:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:26:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:26:52 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:26:52 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:26:52 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:26:56 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:26:56 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:26:56 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:03 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:03 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:03 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:07 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:07 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:07 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:10 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:10 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:10 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:24 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:24 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:24 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:27 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:27 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:27 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:32 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:32 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:32 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:34 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:34 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:34 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:35 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:35 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:35 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:39 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:39 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:39 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:27:40 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:27:40 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:27:40 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:23 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:23 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:23 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:27 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:27 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:27 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:27 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:27 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:27 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:29 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:29 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:29 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:28:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:28:42 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:42 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:42 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:43 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:43 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:43 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:47 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:47 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:47 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:49 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:49 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:49 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:52 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:28:52 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:28:52 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:28:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:28:59 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:29:08 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:29:09 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:29:10 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:29:10 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:29:10 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:29:12 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:29:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:32:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:32:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:41:42 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:41:42 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:41:42 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:41:45 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:41:45 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:41:45 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:41:48 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:41:48 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:41:48 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:41:57 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:41:57 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:41:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:42:00 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:42:00 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:42:00 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:51:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:51:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:57:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:57:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:57:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:57:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:59:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:59:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 11:59:06 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:59:06 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:59:06 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:59:07 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 11:59:07 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 11:59:07 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 11:59:42 [ERROR]: TypeError: logger.http is not a function
+2025-06-06 11:59:42 [ERROR]: TypeError: logger.http is not a function
+    at requestLogger (C:\Users\om\Desktop\5\RACI\backend\middleware\requestLogger.js:10:10)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:280:10)
+    at urlencodedParser (C:\Users\om\Desktop\5\RACI\backend\node_modules\body-parser\lib\types\urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+2025-06-06 11:59:42 [ERROR]: TypeError: logger.http is not a function
+2025-06-06 11:59:42 [ERROR]: TypeError: logger.http is not a function
+    at requestLogger (C:\Users\om\Desktop\5\RACI\backend\middleware\requestLogger.js:10:10)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:280:10)
+    at urlencodedParser (C:\Users\om\Desktop\5\RACI\backend\node_modules\body-parser\lib\types\urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+2025-06-06 12:04:45 [ERROR]: TypeError: logger.http is not a function
+2025-06-06 12:04:45 [ERROR]: TypeError: logger.http is not a function
+    at requestLogger (C:\Users\om\Desktop\5\RACI\backend\middleware\requestLogger.js:10:10)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:280:10)
+    at urlencodedParser (C:\Users\om\Desktop\5\RACI\backend\node_modules\body-parser\lib\types\urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+2025-06-06 12:11:16 [ERROR]: TypeError: logger.http is not a function
+2025-06-06 12:11:16 [ERROR]: TypeError: logger.http is not a function
+    at requestLogger (C:\Users\om\Desktop\5\RACI\backend\middleware\requestLogger.js:10:10)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:280:10)
+    at urlencodedParser (C:\Users\om\Desktop\5\RACI\backend\node_modules\body-parser\lib\types\urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\express\lib\router\index.js:286:9
+2025-06-06 12:12:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:14:26 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:14:26 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:15:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:15:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:16:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:16:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:20:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:20:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:20:29 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:20:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:28:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:28:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:41:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 12:41:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 12:41:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 12:41:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 12:41:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 12:41:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 12:43:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:43:47 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:44:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:44:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:09 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:12 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:26 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:46:39 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:47:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:47:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:48:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:48:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:48:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:48:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:06 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:49:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:32 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:50:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:51:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 12:51:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:53:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:53:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:53:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:53:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:54:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 13:54:01 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:01:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:01:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:01:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:01:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:07:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:07:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:47 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:21:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:29:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:29:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:30:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:30:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:50:49 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:50:50 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 14:51:07 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:08:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:08:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:09:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:09:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:23:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:23:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:30:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:30:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:34:39 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 15:34:39 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 15:34:39 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 15:34:42 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 15:34:42 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 15:34:42 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 15:34:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:34:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:40:09 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 15:40:09 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 15:40:09 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 15:40:12 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 15:40:12 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 15:40:12 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 15:40:12 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 15:40:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:33:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:33:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:33:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:33:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:33:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:33:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:33:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:33:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:37:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:37:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:38:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:38:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:53:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:53:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:53:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:53:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:53:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:53:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:53:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:53:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:54:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:54:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:54:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:54:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 16:54:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 16:54:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 16:54:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 16:54:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:03:30 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:03:30 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:03:30 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:03:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:03:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:03:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:04:16 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:04:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:04:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:04:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:04:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:11:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:11:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:11:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:11:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:11:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:11:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:14:10 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:14:10 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:14:10 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:14:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:14:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:14:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:14:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:14:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:14:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:14:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:14:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:28:40 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:28:40 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:28:40 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:28:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:28:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:28:43 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:28:43 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:28:43 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:28:44 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:28:44 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:28:44 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:28:45 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:28:45 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:28:45 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:28:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:28:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:28:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:28:52 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:31:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:31:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:31:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:31:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:31:54 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:31:54 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:31:54 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:31:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:31:57 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:31:57 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:31:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:31:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:31:58 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:31:58 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:31:58 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:31:59 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:31:59 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:31:59 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:32:02 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:32:02 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:32:02 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:32:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:32:08 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:32:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:32:13 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:32:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:33:01 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:33:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:43:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:43:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:43:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:43:18 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:43:18 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:43:18 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:43:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:43:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:43:30 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:43:30 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:43:30 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:43:31 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:43:31 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:43:31 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:59:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:59:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:59:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:59:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 17:59:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 17:59:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 17:59:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:59:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:59:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 17:59:27 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:06:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:06:22 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:06:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:06:26 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:21:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:21:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:21:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:21:22 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:21:22 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:21:22 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:21:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:21:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:00 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:00 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:00 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:03 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:03 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:03 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:03 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:16 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:16 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:16 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:19 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:19 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:19 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:52 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:52 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:52 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:55 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:33:55 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:33:55 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:33:55 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:33:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:34:12 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:34:12 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:34:12 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:38:04 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:38:04 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:38:04 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:38:29 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:38:29 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:38:29 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:38:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:38:31 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:38:32 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:38:32 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:38:32 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:39:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:39:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:39:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:39:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:39:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:39:36 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:39:36 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:39:36 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:40:59 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:40:59 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:40:59 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:41:00 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:41:00 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:41:00 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:41:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:41:02 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:42:08 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:42:08 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:42:08 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:42:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:42:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:42:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:42:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:42:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:44:43 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:44:43 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:44:43 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:44:46 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:44:46 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:44:46 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:44:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:44:47 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 18:48:18 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:48:18 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:48:18 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 18:51:23 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 18:51:23 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 18:51:23 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 19:58:10 [ERROR]: Response Error: {"success":false,"message":"Invalid credentials"}
+2025-06-06 19:58:17 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 19:58:18 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 19:58:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 19:58:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 19:58:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 19:58:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 19:58:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 19:58:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:09:52 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:09:52 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:09:52 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:09:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:09:56 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:09:56 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:09:56 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:09:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:11:25 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:11:25 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:11:25 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:11:28 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:11:28 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:11:28 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:11:28 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:11:29 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:19:47 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:19:47 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:19:47 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:19:50 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:19:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:19:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:19:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:19:50 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:24:23 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:24:23 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:24:23 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:24:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:24:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:24:26 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:24:26 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:24:26 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:25:41 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:25:41 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:25:41 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:25:44 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:25:44 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:25:44 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:25:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:25:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:31:08 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:31:08 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:31:08 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:31:10 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:31:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:31:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:31:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:31:11 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:31:38 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:31:38 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:31:38 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:31:39 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:31:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:31:41 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:31:41 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:31:41 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:32:05 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:32:05 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:32:05 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:32:08 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:32:08 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:32:08 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:32:08 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:32:09 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:32:50 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:32:50 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:32:50 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:32:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:32:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:32:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:32:53 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:32:54 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:33:41 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:33:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:48:18 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:48:18 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:48:18 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 20:48:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:48:20 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 20:48:21 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 20:48:21 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 20:48:21 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:17:43 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:17:43 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:17:43 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:17:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:17:46 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:17:47 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:17:47 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:17:47 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:39:28 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:39:28 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:39:28 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:39:30 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:39:30 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:39:30 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:39:30 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:39:33 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:47:40 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:47:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:53:39 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:53:39 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:53:39 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:53:42 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 21:53:42 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 21:53:42 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 21:53:42 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 21:53:43 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:19:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:19:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:19:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:19:36 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:19:36 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:19:36 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:19:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:19:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:20:48 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:20:48 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:20:48 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:20:49 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:20:51 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:20:51 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:20:51 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:20:51 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:22:15 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:22:15 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:22:15 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:22:18 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:22:18 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:22:18 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:22:18 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:22:19 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:59:21 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:59:21 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:59:21 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:59:24 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 22:59:25 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 22:59:25 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 22:59:25 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 22:59:25 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:01:46 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:01:46 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:01:46 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:01:47 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:01:48 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:01:49 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:01:49 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:01:49 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:02:43 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:02:43 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:02:43 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:02:44 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:02:45 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:02:46 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:02:46 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:02:46 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:05:08 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:05:08 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:05:08 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:08:01 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:08:01 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:08:01 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:08:04 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:08:04 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:08:04 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:08:04 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:08:05 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:08:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:08:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:08:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:08:57 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:08:57 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:08:57 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:09:00 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:09:00 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:09:00 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:09:00 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:09:01 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:09:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:09:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:09:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:09:37 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:09:37 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:09:37 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:09:37 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:09:37 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:09:37 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:13:29 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:13:29 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:13:29 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:20:03 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:20:03 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:20:03 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:23:55 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:23:55 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:23:55 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:23:58 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:23:58 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:23:58 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:23:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:23:58 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:25:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:25:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:25:33 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:25:36 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:25:36 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:25:36 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:25:36 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:25:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:20 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:20 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:20 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:21 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:23 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:23 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:23 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:23 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:33 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:33 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:34 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:37 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:37 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:37 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:37 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:53 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:53 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:53 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:56 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:26:56 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:26:56 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:26:56 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:26:57 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:27:11 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:27:11 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:27:11 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:27:14 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:27:14 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:27:14 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:27:14 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:27:15 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:27:31 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:27:31 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:27:31 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:27:34 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:27:34 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:27:34 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:27:34 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:27:35 [ERROR]: Response Error: {"success":false,"message":"Not authorized to access resources for this company"}
+2025-06-06 23:28:17 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:28:17 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:28:17 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:28:39 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:28:39 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:28:40 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:29:12 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:29:12 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:29:12 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}
+2025-06-06 23:29:13 [ERROR]: error: invalid input syntax for type integer: "me"
+2025-06-06 23:29:13 [ERROR]: error: invalid input syntax for type integer: "me"
+    at C:\Users\om\Desktop\5\RACI\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getUserById (C:\Users\om\Desktop\5\RACI\backend\controllers\userController.js:254:22)
+2025-06-06 23:29:13 [ERROR]: Response Error: {"success":false,"message":"invalid input syntax for type integer: \"me\""}

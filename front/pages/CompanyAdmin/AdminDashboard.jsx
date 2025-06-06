@@ -465,7 +465,7 @@ const AdminDashboard = () => {
           </div>
         </div>
         
-        <button
+        {/* <button
           onClick={() => navigate('/company-admin/settings')}
           style={{
             padding: '0.5rem 0.75rem',
@@ -481,7 +481,7 @@ const AdminDashboard = () => {
           }}
         >
           Company Settings
-        </button>
+        </button> */}
       </div>
     
       {/* Statistics Cards - Improved layout and alignment */}
@@ -674,7 +674,7 @@ const AdminDashboard = () => {
           alignItems: 'center'
         }}>
           <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: '600' }}>Recent Events</h2>
-          <button
+          {/* <button
             onClick={() => navigate('/company-admin/event-master')}
             style={{
               background: '#4f46e5',
@@ -688,7 +688,7 @@ const AdminDashboard = () => {
             }}
           >
             Create New Event
-          </button>
+          </button> */}
         </div>
 
         <div style={{ padding: '0.5rem' }}>
@@ -700,7 +700,7 @@ const AdminDashboard = () => {
                     <th style={{ textAlign: 'center', padding: '1rem', fontSize: '0.875rem', color: '#6b7280', fontWeight: '500', borderBottom: '2px solid #f3f4f6' }}>Event</th>
                     <th style={{ textAlign: 'center', padding: '1rem', fontSize: '0.875rem', color: '#6b7280', fontWeight: '500', borderBottom: '2px solid #f3f4f6' }}>Department</th>
                     <th style={{ textAlign: 'center', padding: '1rem', fontSize: '0.875rem', color: '#6b7280', fontWeight: '500', borderBottom: '2px solid #f3f4f6' }}>Created On</th>
-                    <th style={{ textAlign: 'center', padding: '1rem', fontSize: '0.875rem', color: '#6b7280', fontWeight: '500', borderBottom: '2px solid #f3f4f6' }}>Actions</th>
+                    {/* <th style={{ textAlign: 'center', padding: '1rem', fontSize: '0.875rem', color: '#6b7280', fontWeight: '500', borderBottom: '2px solid #f3f4f6' }}>Actions</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -746,7 +746,7 @@ const AdminDashboard = () => {
                           gap: '0.5rem', 
                           justifyContent: 'center' 
                         }}>
-                          <button
+                          {/* <button
                             onClick={() => navigate(`/company-admin/events/${event.id}`)}
                             style={{
                               padding: '0.375rem 0.75rem',
@@ -775,7 +775,7 @@ const AdminDashboard = () => {
                             >
                               Review
                             </button>
-                          )}
+                          )} */}
                         </div>
                       </td>
                     </tr>
@@ -806,7 +806,7 @@ const AdminDashboard = () => {
       </div>
       
       {/* Quick Actions Section - Improved formatting */}
-      <div className="card" style={{
+      {/* <div className="card" style={{
         background: 'white',
         borderRadius: '8px',
         boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
@@ -909,7 +909,7 @@ const AdminDashboard = () => {
             <span style={{ fontWeight: '500' }}>RACI Management</span>
           </button>
         </div>
-      </div>
+      </div> */}
 
       <style>{`
         @keyframes spin {

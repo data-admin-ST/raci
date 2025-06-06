@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getMyRaciAssignments } = require('../controllers/userRaciController');
-const { protect } = require('../middleware/authMiddleware');
+const { protect } = require('../middleware/auth');
+const raciController = require('../controllers/raciController');
 
-// Route to get current user's RACI assignments
-router.get('/my-assignments', protect, getMyRaciAssignments);
+// GET /api/user-raci/my-assignments - For any authenticated user
+router.get('/my-assignments', protect, raciController.getMyRaciAssignments);
 
 module.exports = router;

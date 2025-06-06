@@ -191,7 +191,7 @@ const UserManagement = () => {
     <div className="content-wrapper">
       <div className="page-header">
         <h1>User Management</h1>
-        <button 
+        {/* <button 
           className="btn btn-primary" 
           onClick={() => navigate('/company-admin/user-creation')}
           style={{
@@ -204,7 +204,7 @@ const UserManagement = () => {
           }}
         >
           + Add User
-        </button>
+        </button> */}
       </div>
 
       {/* Filters */}
